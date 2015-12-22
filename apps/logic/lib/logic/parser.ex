@@ -9,8 +9,9 @@ defmodule Logic.IssueItemParser do
       |> Map.put(:path,              get_path(issue_doc))
       |> Map.put(:opened_at,         get_opened_at(issue_doc))
       |> Map.put(:opened_by,         get_opened_by(issue_doc))
-      |> Map.put(:last_activity_at,  get_last_activity_at(issue_doc, item))
-      |> Map.put(:last_activity_by,  get_last_activity_by(issue_doc, item))
+      |> Map.put(:last_activity_at,  get_last_activity_at(issue_doc))
+      |> Map.put(:last_activity_by,  get_last_activity_by(issue_doc))
+      |> Map.put(:labels,            get_labels(issue_doc))
 
     case item.status  do
        "Closed" -> item |> parse_closed_data(issue_doc)
@@ -81,19 +82,19 @@ defmodule Logic.IssueItemParser do
       |> find_datevalue
   end
 
-  def get_last_activity_at(issue_doc, item) do
+  def get_last_activity_at(issue_doc) do
     issue_doc
-      |> get_last_action(item)
+      |> get_last_action
       |> find_datevalue
   end
 
-  def get_last_activity_by(issue_doc, item) do
+  def get_last_activity_by(issue_doc) do
     issue_doc
-      |> get_last_action(item)
+      |> get_last_action
       |> find_author
   end
 
-  def get_last_action(issue_doc, item) do
+  def get_last_action(issue_doc) do
     # "#partial-timeline-marker" is the last element after all activities
     # we check wether it has got a comment sibling, if not, we asume the closed item was last activity
     case Floki.find(issue_doc, ".js-comment-container + #partial-timeline-marker") do
@@ -105,6 +106,11 @@ defmodule Logic.IssueItemParser do
         |> Floki.find(".js-comment-container")
         |> last
     end
+  end
+
+
+  def get_labels(issue_doc) do
+    []
   end
 
 

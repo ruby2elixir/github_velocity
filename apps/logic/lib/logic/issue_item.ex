@@ -10,6 +10,6 @@ defmodule Logic.IssueItem do
     closed_by: "",
     last_activity_at: "",
     last_activity_by: "",
-    number_of_comments: 0
-
+    number_of_comments: 0,
+    labels: []
 end
