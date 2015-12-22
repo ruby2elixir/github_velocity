@@ -39,16 +39,17 @@ defmodule Logic.IssueItemParser do
 
 
   def get_opened_at(issue_doc) do
-    issue_doc
-     |> Floki.find(".gh-header-meta time")
+     issue_doc
+     |> Floki.find(".js-comment-container")
+     |> Enum.at(0)
      |> find_datevalue
   end
 
   def get_opened_by(issue_doc) do
     issue_doc
-     |> Floki.find(".gh-header-meta  .author")
-     |> find_in_attrs("href")
-     |> String.replace("/", "")
+     |> Floki.find(".js-comment-container")
+     |> Enum.at(0)
+     |> find_author
   end
 
   def get_path(issue_doc) do
@@ -70,8 +71,7 @@ defmodule Logic.IssueItemParser do
     issue_doc
       |> Floki.find(".discussion-item-closed")
       |> last
-      |> Floki.find(".author")
-      |> Floki.text
+      |> find_author
   end
 
   def get_closed_at(issue_doc) do
@@ -90,8 +90,7 @@ defmodule Logic.IssueItemParser do
   def get_last_activity_by(issue_doc) do
     issue_doc
       |> get_last_comment
-      |> Floki.find(".author")
-      |> Floki.text
+      |> find_author
   end
 
   def get_last_comment(issue_doc) do
@@ -101,13 +100,20 @@ defmodule Logic.IssueItemParser do
   end
 
 
-  def find_datevalue(elem) do
+  ## helper methods
+  defp find_author(elem) do
+    elem
+      |> Floki.find(".author")
+      |> Floki.text
+  end
+
+  defp find_datevalue(elem) do
     elem
       |> Floki.find("time")
       |> find_in_attrs("datetime")
   end
 
-  def last(list) do
+  defp last(list) do
     list
       |> Enum.reverse
       |> Enum.at(0)
