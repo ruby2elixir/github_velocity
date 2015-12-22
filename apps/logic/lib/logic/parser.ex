@@ -69,8 +69,7 @@ defmodule Logic.IssueItemParser do
   def get_closed_by(issue_doc) do
     issue_doc
       |> Floki.find(".discussion-item-closed")
-      |> Enum.reverse
-      |> Enum.at(0)
+      |> last
       |> Floki.find(".author")
       |> Floki.text
   end
@@ -78,8 +77,7 @@ defmodule Logic.IssueItemParser do
   def get_closed_at(issue_doc) do
     issue_doc
       |> Floki.find(".discussion-item-closed")
-      |> Enum.reverse
-      |> Enum.at(0)
+      |> last
       |> find_datevalue
   end
 
@@ -99,8 +97,7 @@ defmodule Logic.IssueItemParser do
   def get_last_comment(issue_doc) do
     issue_doc
       |> Floki.find(".js-comment-container")
-      |> Enum.reverse
-      |> Enum.at(0)
+      |> last
   end
 
 
@@ -108,6 +105,12 @@ defmodule Logic.IssueItemParser do
     elem
       |> Floki.find("time")
       |> find_in_attrs("datetime")
+  end
+
+  def last(list) do
+    list
+      |> Enum.reverse
+      |> Enum.at(0)
   end
 
   defp find_in_attrs(issue_doc, attr_type) do
