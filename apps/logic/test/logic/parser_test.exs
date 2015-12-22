@@ -22,10 +22,10 @@ defmodule Logic.IssueItemParserTest do
         assert @result.closed_at  == "2015-12-19T02:46:15Z"
       end
 
-      # it "has last activity data" do
-      #   assert @result.last_activity_at  == "2015-12-19T02:46:15Z"
-      #   assert @result.last_activity_by  == "tenderlove"
-      # end
+      it "has last activity data" do
+        assert @result.last_activity_at  == "2015-12-19T02:46:15Z"
+        assert @result.last_activity_by  == "tenderlove"
+      end
     end
 
 

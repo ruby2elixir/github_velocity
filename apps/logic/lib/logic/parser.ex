@@ -4,13 +4,13 @@ defmodule Logic.IssueItemParser do
     item      = %Logic.IssueItem{}
     item = item
       |> Map.put(:id,                get_id(issue_doc))
+      |> Map.put(:status,            get_status(issue_doc))
       |> Map.put(:title,             get_title(issue_doc))
       |> Map.put(:path,              get_path(issue_doc))
       |> Map.put(:opened_at,         get_opened_at(issue_doc))
       |> Map.put(:opened_by,         get_opened_by(issue_doc))
-      |> Map.put(:status,            get_status(issue_doc))
-      |> Map.put(:last_activity_at,  get_last_activity_at(issue_doc))
-      |> Map.put(:last_activity_by,  get_last_activity_by(issue_doc))
+      |> Map.put(:last_activity_at,  get_last_activity_at(issue_doc, item))
+      |> Map.put(:last_activity_by,  get_last_activity_by(issue_doc, item))
 
     case item.status  do
        "Closed" -> item |> parse_closed_data(issue_doc)
@@ -81,22 +81,30 @@ defmodule Logic.IssueItemParser do
       |> find_datevalue
   end
 
-  def get_last_activity_at(issue_doc) do
+  def get_last_activity_at(issue_doc, item) do
     issue_doc
-      |> get_last_comment
+      |> get_last_action(item)
       |> find_datevalue
   end
 
-  def get_last_activity_by(issue_doc) do
+  def get_last_activity_by(issue_doc, item) do
     issue_doc
-      |> get_last_comment
+      |> get_last_action(item)
       |> find_author
   end
 
-  def get_last_comment(issue_doc) do
-    issue_doc
-      |> Floki.find(".js-comment-container")
-      |> last
+  def get_last_action(issue_doc, item) do
+    # "#partial-timeline-marker" is the last element after all activities
+    # we check wether it has got a comment sibling, if not, we asume the closed item was last activity
+    case Floki.find(issue_doc, ".js-comment-container + #partial-timeline-marker") do
+      [] ->
+        issue_doc
+        |> Floki.find(".discussion-item-closed")
+      _  ->
+        issue_doc
+        |> Floki.find(".js-comment-container")
+        |> last
+    end
   end
 
 
