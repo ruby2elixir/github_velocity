@@ -34,6 +34,12 @@ defmodule Logic.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:floki, "~> 0.7"},
+      {:elastix, "~> 0.1.0"},
+      {:prelude, github: "houshuang/elixir-prelude", ref: "e225b83d631c7db44243c2be46b892dbcc559e66"},
+      {:poison, "1.5.0"},
+      {:ex_spec, "~> 1.0.0", only: :test}
+    ]
   end
 end
