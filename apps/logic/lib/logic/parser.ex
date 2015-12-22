@@ -110,7 +110,9 @@ defmodule Logic.IssueItemParser do
 
 
   def get_labels(issue_doc) do
-    []
+    issue_doc
+      |> Floki.find(".labels a.label")
+      |> Enum.map( fn(a) -> Floki.text(a) end)
   end
 
 

@@ -52,5 +52,17 @@ defmodule Logic.IssueItemParserTest do
       end
     end
 
+    describe "labels" do
+      it "works with present labels" do
+        res = "issue_rails_19084.html" |> TestHelper.fixture |> IssueItemParser.parse
+        assert res.labels == ["actionpack", "engines", "With reproduction steps"]
+      end
+
+      it "works without labels" do
+        res = "issue_rails_19332.html" |> TestHelper.fixture |> IssueItemParser.parse
+        assert res.labels == []
+      end
+    end
+
   end
 end
