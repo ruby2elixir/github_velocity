@@ -78,6 +78,15 @@ defmodule Logic.IssueItemParserTest do
         assert res.number_of_participants == 5
       end
     end
+
+    describe "get_current_time" do
+      it "works" do
+        res = "issue_rails_19332.html" |> TestHelper.fixture |> IssueItemParser.parse
+        res.updated_at |> IO.inspect
+        refute res.updated_at == ""
+        assert res.updated_at =~  Regex.compile("#{Timex.Date.now.year}") |> Prelude.ok
+      end
+    end
   end
 
 

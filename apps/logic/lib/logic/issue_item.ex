@@ -13,5 +13,6 @@ defmodule Logic.IssueItem do
     number_of_comments: 0,
     number_of_participants: 0,
     participants: [],
-    labels: []
+    labels: [],
+    updated_at: ""
 end

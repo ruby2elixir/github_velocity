@@ -15,6 +15,7 @@ defmodule Logic.IssueItemParser do
       |> Map.put(:participants,                get_participants(issue_doc))
       |> Map.put(:number_of_participants,      get_number_of_participants(issue_doc))
       |> Map.put(:number_of_comments,          get_number_of_comments(issue_doc))
+      |> Map.put(:updated_at,                  get_current_time)
 
     case item.status  do
        "Closed" -> item |> parse_closed_data(issue_doc)
@@ -134,6 +135,11 @@ defmodule Logic.IssueItemParser do
       |> Floki.text
 
     Regex.run(~r/(\d) comments/, s) |> Enum.at(1) |> String.to_integer
+  end
+
+
+  def get_current_time do
+    Timex.Date.now |>  Timex.DateFormat.format("{ISOz}") |> Prelude.ok
   end
 
   ## helper methods
