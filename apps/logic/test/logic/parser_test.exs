@@ -64,5 +64,21 @@ defmodule Logic.IssueItemParserTest do
       end
     end
 
+    describe "participants" do
+      it "works" do
+        res = "issue_rails_19084.html" |> TestHelper.fixture |> IssueItemParser.parse
+        assert res.participants == ["sbull", "evanphx", "jvanbaarsen", "rafaelfranca", "ahacop", "dlackty", "robin850"]
+        assert res.number_of_participants == 7
+      end
+
+      it "works 2.nd example" do
+        res = "issue_rails_19332.html" |> TestHelper.fixture |> IssueItemParser.parse
+        assert res.participants == ["halorgium", "matthewd", "tarcieri", "spscream", "TiagoCardoso1983"]
+        assert res.number_of_participants == 5
+      end
+    end
+
   end
+
+
 end

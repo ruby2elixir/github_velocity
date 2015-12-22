@@ -11,5 +11,7 @@ defmodule Logic.IssueItem do
     last_activity_at: "",
     last_activity_by: "",
     number_of_comments: 0,
+    number_of_participants: 0,
+    participants: [],
     labels: []
 end

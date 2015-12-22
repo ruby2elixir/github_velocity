@@ -3,15 +3,17 @@ defmodule Logic.IssueItemParser do
     issue_doc = Floki.find(issue_html, ".main-content")
     item      = %Logic.IssueItem{}
     item = item
-      |> Map.put(:id,                get_id(issue_doc))
-      |> Map.put(:status,            get_status(issue_doc))
-      |> Map.put(:title,             get_title(issue_doc))
-      |> Map.put(:path,              get_path(issue_doc))
-      |> Map.put(:opened_at,         get_opened_at(issue_doc))
-      |> Map.put(:opened_by,         get_opened_by(issue_doc))
-      |> Map.put(:last_activity_at,  get_last_activity_at(issue_doc))
-      |> Map.put(:last_activity_by,  get_last_activity_by(issue_doc))
-      |> Map.put(:labels,            get_labels(issue_doc))
+      |> Map.put(:id,                          get_id(issue_doc))
+      |> Map.put(:status,                      get_status(issue_doc))
+      |> Map.put(:title,                       get_title(issue_doc))
+      |> Map.put(:path,                        get_path(issue_doc))
+      |> Map.put(:opened_at,                   get_opened_at(issue_doc))
+      |> Map.put(:opened_by,                   get_opened_by(issue_doc))
+      |> Map.put(:last_activity_at,            get_last_activity_at(issue_doc))
+      |> Map.put(:last_activity_by,            get_last_activity_by(issue_doc))
+      |> Map.put(:labels,                      get_labels(issue_doc))
+      |> Map.put(:participants,                get_participants(issue_doc))
+      |> Map.put(:number_of_participants,      get_number_of_participants(issue_doc))
 
     case item.status  do
        "Closed" -> item |> parse_closed_data(issue_doc)
@@ -115,6 +117,15 @@ defmodule Logic.IssueItemParser do
       |> Enum.map( fn(a) -> Floki.text(a) end)
   end
 
+  def get_participants(issue_doc) do
+    issue_doc
+      |> Floki.find(".participation .participation-avatars .participant-avatar")
+      |> Enum.map( fn(a) -> find_in_attrs(a, "aria-label") end)
+  end
+
+  def get_number_of_participants(issue_doc) do
+    issue_doc |> get_participants |> Enum.count
+  end
 
   ## helper methods
   defp find_author(elem) do
