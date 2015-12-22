@@ -1,0 +1,1465 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=1020">
+
+
+    <title>Thread bug with Rails::Engine mounted routes, undefined method `url_options&#39; · Issue #19084 · rails/rails · GitHub</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="Thread bug with Rails::Engine mounted routes, undefined method `url_options&#39; · Issue #19084 · rails/rails" name="twitter:title" /><meta content="This issue occurs randomly in production, as it&#39;s a multi-threading problem. This is very related to puma/puma#647, and the underlying MRI bug https://bugs.ruby-lang.org/issues/10871.
+
+I&#39;m using a ..." name="twitter:description" /><meta content="https://avatars3.githubusercontent.com/u/1115369?v=3&amp;s=400" name="twitter:image:src" />
+      <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars3.githubusercontent.com/u/1115369?v=3&amp;s=400" property="og:image" /><meta content="Thread bug with Rails::Engine mounted routes, undefined method `url_options&#39; · Issue #19084 · rails/rails" property="og:title" /><meta content="https://github.com/rails/rails/issues/19084" property="og:url" /><meta content="This issue occurs randomly in production, as it&#39;s a multi-threading problem. This is very related to puma/puma#647, and the underlying MRI bug https://bugs.ruby-lang.org/issues/10871.
+
+I&#39;m using a ..." property="og:description" />
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+
+    <meta name="pjax-timeout" content="1000">
+
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_issues" data-pjax-transient>
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="25783735:6924:240C2576:5679759A" name="octolytics-dimension-request_id" />
+<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/issues/show" data-pjax-transient="true" name="analytics-location" />
+<meta content="Rails, view, issues#show" data-pjax-transient="true" name="analytics-event" />
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged Out">
+
+
+
+        <meta name="hostname" content="github.com">
+    <meta name="user-login" content="">
+
+        <meta name="expected-hostname" content="github.com">
+
+      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#4078c0">
+      <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+    <meta content="21cd192d781dfb1587d3f6962f96514abb58d6c0" name="form-nonce" />
+
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-2037283749006a7ebc37dc5a63a365e8cde9e5d0099e83d4a77bba85b03a6623.css" media="all" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github2-87b394aa7bb776e9e05abfb54eaa1193404e767a3720d64ff2c8f64c7cfb432b.css" media="all" rel="stylesheet" />
+
+
+
+
+    <meta http-equiv="x-pjax-version" content="696c3d92b2b36833513e39f2a164890b">
+
+
+  <meta name="description" content="rails - Ruby on Rails">
+  <meta name="go-import" content="github.com/rails/rails git https://github.com/rails/rails.git">
+
+  <meta content="4223" name="octolytics-dimension-user_id" /><meta content="rails" name="octolytics-dimension-user_login" /><meta content="8514" name="octolytics-dimension-repository_id" /><meta content="rails/rails" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="8514" name="octolytics-dimension-repository_network_root_id" /><meta content="rails/rails" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="https://github.com/rails/rails/commits/master.atom" rel="alternate" title="Recent Commits to rails:master" type="application/atom+xml">
+
+  </head>
+
+
+  <body class="logged_out   env-production  vis-public">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+
+
+
+
+
+
+
+
+      <div class="header header-logged-out" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-wordmark" href="https://github.com/" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+      <span class="mega-octicon octicon-logo-github"></span>
+    </a>
+
+    <div class="header-actions" role="navigation">
+        <a class="btn btn-primary" href="/join" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">Sign up</a>
+      <a class="btn" href="/login?return_to=%2Frails%2Frails%2Fissues%2F19084" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
+    </div>
+
+    <div class="site-search repo-scope js-site-search" role="search">
+      <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/rails/rails/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/rails/rails/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <label class="js-chromeless-input-container form-control">
+    <div class="scope-badge">This repository</div>
+    <input type="text"
+      class="js-site-search-focus js-site-search-field is-clearable chromeless-input"
+      data-hotkey="s"
+      name="q"
+      placeholder="Search"
+      aria-label="Search this repository"
+      data-global-scope-placeholder="Search GitHub"
+      data-repo-scope-placeholder="Search"
+      tabindex="1"
+      autocapitalize="off">
+  </label>
+</form>
+    </div>
+
+      <ul class="header-nav left" role="navigation">
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="/explore" data-ga-click="(Logged out) Header, go to explore, text:explore">Explore</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="/features" data-ga-click="(Logged out) Header, go to features, text:features">Features</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://enterprise.github.com/" data-ga-click="(Logged out) Header, go to enterprise, text:enterprise">Enterprise</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="/pricing" data-ga-click="(Logged out) Header, go to pricing, text:pricing">Pricing</a>
+          </li>
+      </ul>
+
+  </div>
+</div>
+
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+      <div id="js-flash-container">
+</div>
+
+
+    <div role="main" class="main-content">
+        <div itemscope itemtype="http://schema.org/WebPage">
+    <div id="js-repo-pjax-container" class="context-loader-container js-repo-nav-next" data-pjax-container>
+
+<div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+  <div class="container repohead-details-container">
+
+
+
+<ul class="pagehead-actions">
+
+  <li>
+      <a href="/login?return_to=%2Frails%2Frails"
+    class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+    aria-label="You must be signed in to watch a repository" rel="nofollow">
+    <span class="octicon octicon-eye"></span>
+    Watch
+  </a>
+  <a class="social-count" href="/rails/rails/watchers">
+    2,087
+  </a>
+
+  </li>
+
+  <li>
+      <a href="/login?return_to=%2Frails%2Frails"
+    class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+    aria-label="You must be signed in to star a repository" rel="nofollow">
+    <span class="octicon octicon-star "></span>
+    Star
+  </a>
+
+    <a class="social-count js-social-count" href="/rails/rails/stargazers">
+      28,850
+    </a>
+
+  </li>
+
+  <li>
+      <a href="/login?return_to=%2Frails%2Frails"
+        class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+        aria-label="You must be signed in to fork a repository" rel="nofollow">
+        <span class="octicon octicon-repo-forked "></span>
+        Fork
+      </a>
+
+    <a href="/rails/rails/network" class="social-count">
+      11,689
+    </a>
+  </li>
+</ul>
+
+    <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public ">
+  <span class="octicon octicon-repo "></span>
+  <span class="author"><a href="/rails" class="url fn" itemprop="url" rel="author"><span itemprop="title">rails</span></a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong><a href="/rails/rails" data-pjax="#js-repo-pjax-container">rails</a></strong>
+
+  <span class="page-context-loader">
+    <img alt="" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+  </span>
+
+</h1>
+
+  </div>
+  <div class="container">
+
+<nav class="reponav js-repo-nav js-sidenav-container-pjax js-octicon-loaders"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container">
+
+  <a href="/rails/rails" aria-label="Code" class="js-selected-navigation-item reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /rails/rails">
+    <span class="octicon octicon-code "></span>
+    Code
+</a>
+    <a href="/rails/rails/issues" aria-selected="true" class="js-selected-navigation-item selected reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /rails/rails/issues">
+      <span class="octicon octicon-issue-opened "></span>
+      Issues
+      <span class="counter">415</span>
+</a>
+  <a href="/rails/rails/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /rails/rails/pulls">
+    <span class="octicon octicon-git-pull-request "></span>
+    Pull requests
+    <span class="counter">454</span>
+</a>
+
+  <a href="/rails/rails/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /rails/rails/pulse">
+    <span class="octicon octicon-pulse "></span>
+    Pulse
+</a>
+  <a href="/rails/rails/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /rails/rails/graphs">
+    <span class="octicon octicon-graph "></span>
+    Graphs
+</a>
+
+</nav>
+
+  </div>
+</div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+
+<style type="text/css" media="screen">
+  span.labelstyle-bfdadc, .linked-labelstyle-bfdadc {  background-color: #bfdadc !important;  color: #2c3233 !important;}.labelstyle-bfdadc.selected {  background-color: #bfdadc !important;  color: #2c3233 !important;}.label-select-menu .labelstyle-bfdadc.selected {  background:rgba(191, 218, 220, 0.12) !important;  color: #849799 !important;}
+
+span.labelstyle-8B00FC, .linked-labelstyle-8B00FC {  background-color: #8B00FC !important;  color: #fff !important;}.labelstyle-8B00FC.selected {  background-color: #8B00FC !important;  color: #fff !important;}.label-select-menu .labelstyle-8B00FC.selected {  background:rgba(139, 0, 252, 0.12) !important;  color: #540099 !important;}
+
+span.labelstyle-FFF700, .linked-labelstyle-FFF700 {  background-color: #FFF700 !important;  color: #333100 !important;}.labelstyle-FFF700.selected {  background-color: #FFF700 !important;  color: #333100 !important;}.label-select-menu .labelstyle-FFF700.selected {  background:rgba(255, 247, 0, 0.12) !important;  color: #999400 !important;}
+
+span.labelstyle-d7e102, .linked-labelstyle-d7e102 {  background-color: #d7e102 !important;  color: #303300 !important;}.labelstyle-d7e102.selected {  background-color: #d7e102 !important;  color: #303300 !important;}.label-select-menu .labelstyle-d7e102.selected {  background:rgba(215, 225, 2, 0.12) !important;  color: #929901 !important;}
+
+span.labelstyle-5319e7, .linked-labelstyle-5319e7 {  background-color: #5319e7 !important;  color: #fff !important;}.labelstyle-5319e7.selected {  background-color: #5319e7 !important;  color: #fff !important;}.label-select-menu .labelstyle-5319e7.selected {  background:rgba(83, 25, 231, 0.12) !important;  color: #361099 !important;}
+
+span.labelstyle-00E5FF, .linked-labelstyle-00E5FF {  background-color: #00E5FF !important;  color: #002d33 !important;}.labelstyle-00E5FF.selected {  background-color: #00E5FF !important;  color: #002d33 !important;}.label-select-menu .labelstyle-00E5FF.selected {  background:rgba(0, 229, 255, 0.12) !important;  color: #008999 !important;}
+
+span.labelstyle-0b02e1, .linked-labelstyle-0b02e1 {  background-color: #0b02e1 !important;  color: #fff !important;}.labelstyle-0b02e1.selected {  background-color: #0b02e1 !important;  color: #fff !important;}.label-select-menu .labelstyle-0b02e1.selected {  background:rgba(11, 2, 225, 0.30720418300653585) !important;  color: #040066 !important;}
+
+span.labelstyle-FC9300, .linked-labelstyle-FC9300 {  background-color: #FC9300 !important;  color: #331d00 !important;}.labelstyle-FC9300.selected {  background-color: #FC9300 !important;  color: #331d00 !important;}.label-select-menu .labelstyle-FC9300.selected {  background:rgba(252, 147, 0, 0.12) !important;  color: #995900 !important;}
+
+span.labelstyle-ededed, .linked-labelstyle-ededed {  background-color: #ededed !important;  color: #333333 !important;}.labelstyle-ededed.selected {  background-color: #ededed !important;  color: #333333 !important;}.label-select-menu .labelstyle-ededed.selected {  background:rgba(237, 237, 237, 0.12) !important;  color: #999999 !important;}
+
+span.labelstyle-006b75, .linked-labelstyle-006b75 {  background-color: #006b75 !important;  color: #fff !important;}.labelstyle-006b75.selected {  background-color: #006b75 !important;  color: #fff !important;}.label-select-menu .labelstyle-006b75.selected {  background:rgba(0, 107, 117, 0.12) !important;  color: #008b99 !important;}
+
+span.labelstyle-02d7e1, .linked-labelstyle-02d7e1 {  background-color: #02d7e1 !important;  color: #003033 !important;}.labelstyle-02d7e1.selected {  background-color: #02d7e1 !important;  color: #003033 !important;}.label-select-menu .labelstyle-02d7e1.selected {  background:rgba(2, 215, 225, 0.12) !important;  color: #019299 !important;}
+
+span.labelstyle-e102d8, .linked-labelstyle-e102d8 {  background-color: #e102d8 !important;  color: #fff !important;}.labelstyle-e102d8.selected {  background-color: #e102d8 !important;  color: #fff !important;}.label-select-menu .labelstyle-e102d8.selected {  background:rgba(225, 2, 216, 0.12) !important;  color: #990192 !important;}
+
+span.labelstyle-d4c5f9, .linked-labelstyle-d4c5f9 {  background-color: #d4c5f9 !important;  color: #2b2833 !important;}.labelstyle-d4c5f9.selected {  background-color: #d4c5f9 !important;  color: #2b2833 !important;}.label-select-menu .labelstyle-d4c5f9.selected {  background:rgba(212, 197, 249, 0.12) !important;  color: #827999 !important;}
+
+span.labelstyle-eb6420, .linked-labelstyle-eb6420 {  background-color: #eb6420 !important;  color: #fff !important;}.labelstyle-eb6420.selected {  background-color: #eb6420 !important;  color: #fff !important;}.label-select-menu .labelstyle-eb6420.selected {  background:rgba(235, 100, 32, 0.12) !important;  color: #994114 !important;}
+
+span.labelstyle-e10c02, .linked-labelstyle-e10c02 {  background-color: #e10c02 !important;  color: #fff !important;}.labelstyle-e10c02.selected {  background-color: #e10c02 !important;  color: #fff !important;}.label-select-menu .labelstyle-e10c02.selected {  background:rgba(225, 12, 2, 0.12) !important;  color: #990801 !important;}
+
+span.labelstyle-000000, .linked-labelstyle-000000 {  background-color: #000000 !important;  color: #fff !important;}.labelstyle-000000.selected {  background-color: #000000 !important;  color: #fff !important;}.label-select-menu .labelstyle-000000.selected {  background:rgba(247, 247, 247, 1.0) !important;  color: #666666 !important;}
+
+span.labelstyle-f7c6c7, .linked-labelstyle-f7c6c7 {  background-color: #f7c6c7 !important;  color: #332829 !important;}.labelstyle-f7c6c7.selected {  background-color: #f7c6c7 !important;  color: #332829 !important;}.label-select-menu .labelstyle-f7c6c7.selected {  background:rgba(247, 198, 199, 0.12) !important;  color: #997a7b !important;}
+
+span.labelstyle-fbca04, .linked-labelstyle-fbca04 {  background-color: #fbca04 !important;  color: #332900 !important;}.labelstyle-fbca04.selected {  background-color: #fbca04 !important;  color: #332900 !important;}.label-select-menu .labelstyle-fbca04.selected {  background:rgba(251, 202, 4, 0.12) !important;  color: #997b02 !important;}
+
+span.labelstyle-8BE06E, .linked-labelstyle-8BE06E {  background-color: #8BE06E !important;  color: #1f3219 !important;}.labelstyle-8BE06E.selected {  background-color: #8BE06E !important;  color: #1f3219 !important;}.label-select-menu .labelstyle-8BE06E.selected {  background:rgba(139, 224, 110, 0.12) !important;  color: #5e994b !important;}
+
+span.labelstyle-e11d21, .linked-labelstyle-e11d21 {  background-color: #e11d21 !important;  color: #fff !important;}.labelstyle-e11d21.selected {  background-color: #e11d21 !important;  color: #fff !important;}.label-select-menu .labelstyle-e11d21.selected {  background:rgba(225, 29, 33, 0.12) !important;  color: #991316 !important;}
+
+span.labelstyle-D94A4A, .linked-labelstyle-D94A4A {  background-color: #D94A4A !important;  color: #fff !important;}.labelstyle-D94A4A.selected {  background-color: #D94A4A !important;  color: #fff !important;}.label-select-menu .labelstyle-D94A4A.selected {  background:rgba(217, 74, 74, 0.12) !important;  color: #993434 !important;}
+
+span.labelstyle-444444, .linked-labelstyle-444444 {  background-color: #444444 !important;  color: #fff !important;}.labelstyle-444444.selected {  background-color: #444444 !important;  color: #fff !important;}.label-select-menu .labelstyle-444444.selected {  background:rgba(68, 68, 68, 0.12) !important;  color: #999999 !important;}
+
+span.labelstyle-009800, .linked-labelstyle-009800 {  background-color: #009800 !important;  color: #fff !important;}.labelstyle-009800.selected {  background-color: #009800 !important;  color: #fff !important;}.label-select-menu .labelstyle-009800.selected {  background:rgba(0, 152, 0, 0.12) !important;  color: #009900 !important;}
+</style>
+
+<div class="issues-listing" data-pjax>
+  <div class="context-loader large-format-loader">
+  <p><img alt="" height="64" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-128.gif" width="64" /></p>
+  <p>Loading…</p>
+</div>
+
+    <div id="show_issue" class="js-issues-results">
+
+
+  <div
+    id="partial-discussion-header"
+    class="gh-header js-details-container js-socket-channel js-updatable-content issue"
+    data-channel="rails/rails:issue:59001146"
+    data-url="/rails/rails/issues/19084/show_partial?partial=issues%2Ftitle">
+
+  <div class="gh-header-show ">
+      <div class="gh-header-actions">
+          <a href="/rails/rails/issues/new" class="btn btn-sm btn-primary right" data-hotkey="c">
+            New issue
+          </a>
+      </div>
+
+    <h1 class="gh-header-title">
+      <span class="js-issue-title">Thread bug with Rails::Engine mounted routes, undefined method `url_options&#39;</span>
+      <span class="gh-header-number">#19084</span>
+    </h1>
+  </div>
+
+
+  <div class="flex-table gh-header-meta">
+    <div class="flex-table-item">
+        <div class="state state-open">
+          <span class="octicon octicon-issue-opened "></span>
+          Open
+        </div>
+    </div>
+    <div class="flex-table-item flex-table-item-primary">
+        <a href="/sbull" class="author">sbull</a> opened this <span class="noun">Issue</span> <time datetime="2015-02-26T01:15:31Z" is="relative-time">Feb 26, 2015</time>
+        &middot; 19 comments
+    </div>
+  </div>
+</div>
+
+
+    <div id="discussion_bucket" class="tab-content clearfix">
+      <div id="partial-discussion-sidebar"
+     class="discussion-sidebar js-socket-channel js-updatable-content"
+     data-channel="rails/rails:issue:59001146"
+     data-url="/rails/rails/issues/19084/show_partial?partial=issues%2Fsidebar">
+
+  <div class="discussion-sidebar-item sidebar-labels js-discussion-sidebar-item">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/rails/rails/issues/19084?partial=issues%2Fsidebar%2Fshow%2Flabels" class="js-issue-sidebar-form" data-form-nonce="21cd192d781dfb1587d3f6962f96514abb58d6c0" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="2BXsGqFqx3vLZos/SUTYELQB5eUEvwY6uYZj2ezvIEbACI2nK34Dj53k66uH6N4MhxkxV4s5oWu4LWJobTFq+Q==" /></div>
+
+  <h3 class="discussion-sidebar-heading">
+    Labels
+  </h3>
+
+
+    <div class="labels css-truncate">
+      <a href="/rails/rails/labels/actionpack" class="label css-truncate-target linked-labelstyle-FFF700" title="actionpack">actionpack</a>
+  <a href="/rails/rails/labels/engines" class="label css-truncate-target linked-labelstyle-e102d8" title="engines">engines</a>
+  <a href="/rails/rails/labels/With%20reproduction%20steps" class="label css-truncate-target linked-labelstyle-009800" title="With reproduction steps">With reproduction steps</a>
+
+</div>
+
+</form></div>
+
+  <div class="discussion-sidebar-item sidebar-milestone js-discussion-sidebar-item">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/rails/rails/issues/19084/set_milestone?partial=issues%2Fsidebar%2Fshow%2Fmilestone" class="js-issue-sidebar-form" data-form-nonce="21cd192d781dfb1587d3f6962f96514abb58d6c0" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="75D7AkTVWRHrLc360LE8wJldxgMrR2q/Wkn1p84+cyqGc5kry5uWg/6xMK25BlZFHLqKSDfoE4K4DJ9WYHxYdg==" /></div>
+
+  <h3 class="discussion-sidebar-heading">
+    Milestone
+  </h3>
+
+
+      No milestone
+
+</form></div>
+
+  <div class="discussion-sidebar-item sidebar-assignee js-discussion-sidebar-item">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/rails/rails/issues/19084?partial=issues%2Fsidebar%2Fshow%2Fassignee" class="js-issue-sidebar-form" data-form-nonce="21cd192d781dfb1587d3f6962f96514abb58d6c0" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="AsSaorgqNlU8mcsSz6cy9wyK1auv2wAzAbGNw/hEoAQuc+n9SInjYMxJViHI48Rn3cKN3sj66GjJWLZWeUiOTg==" /></div>
+
+  <h3 class="discussion-sidebar-heading">
+    Assignee
+  </h3>
+
+
+    <span class="css-truncate">
+      No one assigned
+</span>
+
+</form></div>
+
+
+  <div id="partial-users-participants" class="discussion-sidebar-item">
+  <div class="participation">
+
+    <h3 class="discussion-sidebar-heading">
+      7 participants
+    </h3>
+    <div class="participation-avatars">
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="sbull" href="/sbull"><img alt="@sbull" class="avatar" height="20" src="https://avatars2.githubusercontent.com/u/1115369?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="evanphx" href="/evanphx"><img alt="@evanphx" class="avatar" height="20" src="https://avatars1.githubusercontent.com/u/7?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="jvanbaarsen" href="/jvanbaarsen"><img alt="@jvanbaarsen" class="avatar" height="20" src="https://avatars3.githubusercontent.com/u/1362793?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="rafaelfranca" href="/rafaelfranca"><img alt="@rafaelfranca" class="avatar" height="20" src="https://avatars1.githubusercontent.com/u/47848?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="ahacop" href="/ahacop"><img alt="@ahacop" class="avatar" height="20" src="https://avatars3.githubusercontent.com/u/1678968?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="dlackty" href="/dlackty"><img alt="@dlackty" class="avatar" height="20" src="https://avatars2.githubusercontent.com/u/14349?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="robin850" href="/robin850"><img alt="@robin850" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/354185?v=3&amp;s=40" width="20" /> </a>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+      <div class="discussion-timeline js-quote-selection-container ">
+
+        <div class="js-discussion js-socket-channel" data-channel="rails/rails:marked-as-read:59001146">
+
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/sbull"><img alt="@sbull" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/1115369?v=3&amp;s=96" width="48" /></a>
+    <div id="issue-59001146"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="1ff975e7c46e2eceff3cb6dcd7a81a56">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/sbull" class="author">sbull</a>
+    </strong>
+
+    commented
+
+    <a href="#issue-59001146" class="timestamp">
+      <time datetime="2015-02-26T01:15:31Z" is="relative-time">Feb 26, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>This issue occurs randomly in production, as it's a multi-threading problem. This is very related to <a href="https://github.com/puma/puma/issues/647" class="issue-link js-issue-link" data-url="https://github.com/puma/puma/issues/647" data-id="56163669" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">puma/puma#647</a>, and the underlying MRI bug <a href="https://bugs.ruby-lang.org/issues/10871">https://bugs.ruby-lang.org/issues/10871</a>.</p>
+
+<p>I'm using a mounted engine, rails_admin, and I get the following exception frequently in one of my views, in which I have <code>rails_admin.show_path(model_name: 'dummy', id: 123)</code>.</p>
+
+<pre><code>ActionView::Template::Error: undefined method `url_options' for #&lt;Module:0x007f432e67dc20&gt;
+action_dispatch/routing/route_set.rb:271:in `call'
+    controller_options = t.url_options
+  action_dispatch/routing/route_set.rb:222:in `call'
+    super
+  action_dispatch/routing/route_set.rb:334:in `block (2 levels) in define_url_helper'
+    helper.call self, args, options
+  action_dispatch/routing/mapper.rb:637:in `block (2 levels) in define_generate_prefix'
+    _routes.url_helpers.send("#{name}_path", prefix_options)
+  action_dispatch/routing/route_set.rb:775:in `url_for'
+    script_name = find_script_name options
+  action_dispatch/routing/route_set.rb:279:in `call'
+    t._routes.url_for(hash, route_name, url_strategy)
+  action_dispatch/routing/route_set.rb:222:in `call'
+    super
+  action_dispatch/routing/route_set.rb:334:in `block (2 levels) in define_url_helper'
+    helper.call self, args, options
+...
+</code></pre>
+
+<p>I have isolated the problem with a reproducible test script and example output here:<br>
+<a href="https://gist.github.com/sbull/78eb41fdfd0460f5ce80#file-route_helpers_debug-rb">https://gist.github.com/sbull/78eb41fdfd0460f5ce80#file-route_helpers_debug-rb</a></p>
+
+<p>I am able to work around thread problems with the use of Rails.application.routes.url_helpers in other contexts in my app, but I haven't yet found a way to workaround this problem with routes for mounted engines. Hopefully there's a way for these mounted url helpers to work around the underlying bug in MRI.</p>
+
+<p>/cc <a href="https://github.com/evanphx" class="user-mention">@evanphx</a>, /cc <a href="https://github.com/tenderlove" class="user-mention">@tenderlove</a> (due to involvement in previous issue)</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/evanphx"><img alt="@evanphx" class="timeline-comment-avatar" height="48" src="https://avatars1.githubusercontent.com/u/7?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-76111198"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="61b66c8b7744e57b39ce6e5d8a0909fb">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/evanphx" class="author">evanphx</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-76111198" class="timestamp">
+      <time datetime="2015-02-26T02:28:05Z" is="relative-time">Feb 26, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>This should be fixed by <a href="https://github.com/rails/rails/pull/19007" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/19007" data-id="58280093" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#19007</a> by not invoking url_helpers concurrently. </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/sbull"><img alt="@sbull" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/1115369?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-76112851"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="09f191bf756ca0d96be55098c3403a8f">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/sbull" class="author">sbull</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-76112851" class="timestamp">
+      <time datetime="2015-02-26T02:46:58Z" is="relative-time">Feb 26, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Would any workarounds be apparent in the meantime?</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/sbull"><img alt="@sbull" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/1115369?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-76118065"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="6dcd415e2fad8bf38454a158e5ad6a2c">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/sbull" class="author">sbull</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-76118065" class="timestamp">
+      <time datetime="2015-02-26T03:52:33Z" is="relative-time">Feb 26, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>I'm attempting to create a workaround for this using a Mutex. I've been able to greatly reduce the frequency of errors, but not eliminate it completely. Here's the details: <a href="https://gist.github.com/sbull/e83defaa7c6a93950866">https://gist.github.com/sbull/e83defaa7c6a93950866</a></p>
+
+<p>I'm including the important bits here:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">class</span> <span class="pl-en">TestEngine<span class="pl-e"> &lt; Rails::Engine</span></span>; <span class="pl-k">end</span>
+<span class="pl-c1">TestEngine</span>.routes.draw <span class="pl-k">do</span>
+  get <span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span> =&gt; <span class="pl-s"><span class="pl-pds">'</span>dummy#index<span class="pl-pds">'</span></span>, <span class="pl-c1">as:</span> <span class="pl-c1">:dummy</span>
+<span class="pl-k">end</span>
+
+<span class="pl-c1">Rails</span>.application.routes.draw <span class="pl-k">do</span>
+  mount <span class="pl-c1">TestEngine</span>, <span class="pl-c1">at:</span> <span class="pl-s"><span class="pl-pds">'</span>-<span class="pl-pds">'</span></span>, <span class="pl-c1">as:</span> <span class="pl-s"><span class="pl-pds">'</span>test_routes<span class="pl-pds">'</span></span>
+<span class="pl-k">end</span>
+
+<span class="pl-k">class</span> <span class="pl-en">TestController<span class="pl-e"> &lt; ActionController::Base</span></span>
+  <span class="pl-k">def</span> <span class="pl-en">engine_test</span>
+    render <span class="pl-c1">plain:</span> <span class="pl-c1">RouteHelper</span>.one.dummy_path
+  <span class="pl-k">end</span>
+<span class="pl-k">end</span>
+
+<span class="pl-c1">ROUTES_MUTEX</span> <span class="pl-k">=</span> <span class="pl-c1">Mutex</span>.<span class="pl-k">new</span>
+
+<span class="pl-k">class</span> <span class="pl-en">RouteHelper</span>
+
+  <span class="pl-k">class</span> <span class="pl-en">UrlHelpers</span>
+    <span class="pl-k">include</span> <span class="pl-c1">TestEngine</span>.routes.url_helpers
+  <span class="pl-k">end</span>
+
+  <span class="pl-k">def</span> <span class="pl-en">self.one</span>
+    <span class="pl-smi">@@one</span>
+  <span class="pl-k">end</span>
+
+  <span class="pl-k">def</span> <span class="pl-en">self.one=</span>(<span class="pl-smi">one</span>)
+    <span class="pl-smi">@@one</span> <span class="pl-k">=</span> one
+  <span class="pl-k">end</span>
+
+  <span class="pl-k">def</span> <span class="pl-en">self.url_helpers=</span>(<span class="pl-smi">url_helpers</span>)
+    <span class="pl-smi">@@url_helpers</span> <span class="pl-k">=</span> url_helpers
+  <span class="pl-k">end</span>
+
+  <span class="pl-k">def</span> <span class="pl-en">method_missing</span>(<span class="pl-smi">symbol</span>, <span class="pl-k">*</span><span class="pl-smi">args</span>)
+    <span class="pl-c1">ROUTES_MUTEX</span>.synchronize {
+      <span class="pl-smi">@@url_helpers</span>.send(symbol, <span class="pl-k">*</span>args)
+    }
+  <span class="pl-k">end</span>
+
+<span class="pl-k">end</span>
+
+<span class="pl-c1">RouteHelper</span>.one <span class="pl-k">=</span> <span class="pl-c1">RouteHelper</span>.<span class="pl-k">new</span>
+<span class="pl-c1">RouteHelper</span>.url_helpers <span class="pl-k">=</span> <span class="pl-c1">RouteHelper</span>::<span class="pl-c1">UrlHelpers</span>.<span class="pl-k">new</span>
+
+puts <span class="pl-s"><span class="pl-pds">"</span>Running Mounted Engine dummy_path...<span class="pl-pds">"</span></span>
+run_threads <span class="pl-k">do</span>
+  env <span class="pl-k">=</span> { <span class="pl-s"><span class="pl-pds">'</span>REQUEST_METHOD<span class="pl-pds">'</span></span> =&gt; <span class="pl-s"><span class="pl-pds">'</span>GET<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>rack.input<span class="pl-pds">'</span></span> =&gt; <span class="pl-c1">StringIO</span>.<span class="pl-k">new</span> }
+  status, headers, rack_body <span class="pl-k">=</span> <span class="pl-c1">TestController</span>.action(<span class="pl-s"><span class="pl-pds">'</span>engine_test<span class="pl-pds">'</span></span>).call(env)
+  rack_body.body
+<span class="pl-k">end</span></pre></div>
+
+<p>Now, as best as I can reason, the ROUTES_MUTEX would prevent any concurrent invoking of the buggy url_helpers. I've tried a few other variations of this, and I still get an error every few times I run the test script.</p>
+
+<p>This makes me concerned that there's something causing problems that I don't understand. As far as I can see, the real url_helpers would never be called concurrently. <a href="https://github.com/evanphx" class="user-mention">@evanphx</a>, is there any chance that you can take a peek to let me know where this workaround is failing?</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/evanphx"><img alt="@evanphx" class="timeline-comment-avatar" height="48" src="https://avatars1.githubusercontent.com/u/7?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-76130468"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="55b15de11a55841eea21c427c93e6381">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/evanphx" class="author">evanphx</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-76130468" class="timestamp">
+      <time datetime="2015-02-26T06:47:49Z" is="relative-time">Feb 26, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p><a href="https://github.com/sbull" class="user-mention">@sbull</a> you could probably take the change I did in <a href="https://github.com/rails/rails/pull/19007" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/19007" data-id="58280093" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#19007</a> and make it a hot patch you put into your initializers, to just fix the core rails behavior.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/jvanbaarsen"><img alt="@jvanbaarsen" class="timeline-comment-avatar" height="48" src="https://avatars3.githubusercontent.com/u/1362793?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-76156943"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="584e9fb4a3b0ac266500d01e840b1085">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/jvanbaarsen" class="author">jvanbaarsen</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-76156943" class="timestamp">
+      <time datetime="2015-02-26T10:42:01Z" is="relative-time">Feb 26, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p><a href="https://github.com/rafaelfranca" class="user-mention">@rafaelfranca</a> can you add the label "With reproduction steps"?</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/sbull"><img alt="@sbull" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/1115369?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-76250099"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="4b03e1e8bf7d1e1d8f2770683140d015">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/sbull" class="author">sbull</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-76250099" class="timestamp">
+      <time datetime="2015-02-26T19:30:04Z" is="relative-time">Feb 26, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p><a href="https://github.com/evanphx" class="user-mention">@evanphx</a> I've tried adding a monkeypatch with your fix in <a href="https://github.com/rails/rails/pull/19007" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/19007" data-id="58280093" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#19007</a> to my original reproduction script. It has the result of reducing the frequency of the problem, but not fixing it. (Originally I was getting an average of 8 failed threads out of 10, with the monkeypatch I get an average of 5 failed threads out of 10.) Here's the reproduction with the monkeypatch: <a href="https://gist.github.com/sbull/5d716e74bcc323b29895">https://gist.github.com/sbull/5d716e74bcc323b29895</a></p>
+
+<p>When I tried my workaround approach above with a Mutex, I would get either no failures or 1 failure, regardless of how many threads or iterations per thread I tried.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/sbull"><img alt="@sbull" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/1115369?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-76478521"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="16605132eb61398c368b0c669728d108">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/sbull" class="author">sbull</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-76478521" class="timestamp">
+      <time datetime="2015-02-27T21:51:06Z" is="relative-time">Feb 27, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>If anyone is interested in an "almost fixed" workaround, here's what I've done:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">module</span> <span class="pl-en">Routes</span>
+  <span class="pl-k">class</span> <span class="pl-en">RailsAdmin</span>
+    <span class="pl-k">class</span> <span class="pl-en">UrlHelpers</span>
+      <span class="pl-k">include</span> ::<span class="pl-c1">RailsAdmin</span>::<span class="pl-c1">Engine</span>.routes.url_helpers
+    <span class="pl-k">end</span>
+    <span class="pl-smi">@@semaphore</span> <span class="pl-k">=</span> <span class="pl-c1">Mutex</span>.<span class="pl-k">new</span>
+    <span class="pl-smi">@@url_helpers</span> <span class="pl-k">=</span> <span class="pl-c1">UrlHelpers</span>.<span class="pl-k">new</span>
+    <span class="pl-k">def</span> <span class="pl-en">method_missing</span>(<span class="pl-smi">symbol</span>, <span class="pl-k">*</span><span class="pl-smi">args</span>)
+      <span class="pl-smi">@@semaphore</span>.synchronize {
+        <span class="pl-smi">@@url_helpers</span>.send(symbol, <span class="pl-k">*</span>args)
+      }
+    <span class="pl-k">end</span>
+    <span class="pl-k">def</span> <span class="pl-en">self.solo</span>
+      <span class="pl-smi">@@solo</span>
+    <span class="pl-k">end</span>
+    <span class="pl-smi">@@solo</span> <span class="pl-k">=</span> <span class="pl-v">self</span>.<span class="pl-k">new</span>
+  <span class="pl-k">end</span>
+  <span class="pl-k">def</span> <span class="pl-en">self.rails_admin</span>
+    <span class="pl-c1">RailsAdmin</span>.solo
+  <span class="pl-k">end</span>
+<span class="pl-k">end</span></pre></div>
+
+<p>And I use it like <code>Routes.rails_admin.show_path(model_name: 'post', id: 123)</code>. So far, this works in real life, but produces an occasional error in my contrived reproduction script. (See <a href="https://github.com/puma/puma/issues/647" class="issue-link js-issue-link" data-url="https://github.com/puma/puma/issues/647" data-id="56163669" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">puma/puma#647</a> for a workaround for generating non-engine urls outside of requests.)</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+
+
+
+
+  <div class="discussion-item discussion-item-labeled">
+    <div class="discussion-item-header" id="event-247452193">
+
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-tag "></span>
+      </span>
+      <img alt="@robin850" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/354185?v=3&amp;s=32" width="16" />
+      <a href="/robin850" class="author">robin850</a>
+      added the <span class="label-color" style="background-color: #009800;"><a href="/rails/rails/labels/With%20reproduction%20steps" style="color: #fff">With reproduction steps</a></span> label <a href="https://github.com/rails/rails/issues/19084#event-247452193" class="timestamp"><time class="timestamp" datetime="2015-03-06T11:57:37Z" is="relative-time">Mar 6, 2015</time></a>
+    </div>
+  </div>
+
+
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/rafaelfranca"><img alt="@rafaelfranca" class="timeline-comment-avatar" height="48" src="https://avatars1.githubusercontent.com/u/47848?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-91042738"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container owner-comment"
+     data-body-version="66b2d98ebf08ee3bf4e27c248153e5e5">
+
+  <div class="timeline-comment-header ">
+
+
+    <span class="timeline-comment-label">Owner</span>
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/rafaelfranca" class="author">rafaelfranca</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-91042738" class="timestamp">
+      <time datetime="2015-04-08T21:33:45Z" is="relative-time">Apr 8, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p><a href="https://github.com/sbull" class="user-mention">@sbull</a> have you tested with an application pointing to master branch?</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+
+
+  <div class="discussion-item discussion-item-labeled">
+    <div class="discussion-item-header" id="event-276650711">
+
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-tag "></span>
+      </span>
+      <img alt="@rafaelfranca" class="avatar" height="16" src="https://avatars2.githubusercontent.com/u/47848?v=3&amp;s=32" width="16" />
+      <a href="/rafaelfranca" class="author">rafaelfranca</a>
+        added <span class="label-color" style="background-color: #ededed;" title="by rafaelfranca at 2015-04-08 21:33:51"><a href="/rails/rails/labels/needs%20feedback" style="color: #333333">needs feedback</a></span> and removed <span class="label-color" style="background-color: #009800;" title="by rafaelfranca at 2015-04-08 21:33:51"><a href="/rails/rails/labels/With%20reproduction%20steps" style="color: #fff">With reproduction steps</a></span> labels <a href="https://github.com/rails/rails/issues/19084#event-276650711" class="timestamp"><time class="timestamp" datetime="2015-04-08T21:33:51Z" is="relative-time">Apr 8, 2015</time></a>
+    </div>
+  </div>
+
+
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/sbull"><img alt="@sbull" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/1115369?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-91130754"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="00c9a83748c52ea85d2fa05eee2f9dc1">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/sbull" class="author">sbull</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-91130754" class="timestamp">
+      <time datetime="2015-04-09T06:57:32Z" is="relative-time">Apr 9, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Short answer: problem still exists on master.</p>
+
+<p>I've tried this again using a clone of rails master (<code>git clone git://github.com/rails/rails.git</code>, <code>cd rails</code>, <code>bundle install</code>, <code>bundle exec rails new ../rails-routes-bug --dev</code>), and run my test script again (<code>bundle exec rails runner route_helpers_debug.rb</code>). It appears that the frequency of the issue is greatly reduced, but it still happens occasionally. In fact, I've had to increase the number of threads/iterations to exhibit the problem.</p>
+
+<p>Here's the updated gist with the script and the output: <a href="https://gist.github.com/sbull/114f93a374136ace74f1">https://gist.github.com/sbull/114f93a374136ace74f1</a></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+
+
+  <div class="discussion-item discussion-item-labeled">
+    <div class="discussion-item-header" id="event-277282177">
+
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-tag "></span>
+      </span>
+      <img alt="@rafaelfranca" class="avatar" height="16" src="https://avatars2.githubusercontent.com/u/47848?v=3&amp;s=32" width="16" />
+      <a href="/rafaelfranca" class="author">rafaelfranca</a>
+        added <span class="label-color" style="background-color: #009800;" title="by rafaelfranca at 2015-04-09 15:25:56"><a href="/rails/rails/labels/With%20reproduction%20steps" style="color: #fff">With reproduction steps</a></span> <span class="label-color" style="background-color: #FFF700;" title="by rafaelfranca at 2015-04-09 15:26:05"><a href="/rails/rails/labels/actionpack" style="color: #333100">actionpack</a></span> <span class="label-color" style="background-color: #e102d8;" title="by rafaelfranca at 2015-04-09 15:26:05"><a href="/rails/rails/labels/engines" style="color: #fff">engines</a></span> and removed <span class="label-color" style="background-color: #ededed;" title="by rafaelfranca at 2015-04-09 15:25:57"><a href="/rails/rails/labels/needs%20feedback" style="color: #333333">needs feedback</a></span> labels <a href="https://github.com/rails/rails/issues/19084#event-277282177" class="timestamp"><time class="timestamp" datetime="2015-04-09T15:25:56Z" is="relative-time">Apr 9, 2015</time></a>
+    </div>
+  </div>
+
+
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/rafaelfranca"><img alt="@rafaelfranca" class="timeline-comment-avatar" height="48" src="https://avatars1.githubusercontent.com/u/47848?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-91263865"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container owner-comment"
+     data-body-version="00d06796e489999226fb5bb27fe1b3b2">
+
+  <div class="timeline-comment-header ">
+
+
+    <span class="timeline-comment-label">Owner</span>
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/rafaelfranca" class="author">rafaelfranca</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-91263865" class="timestamp">
+      <time datetime="2015-04-09T15:26:08Z" is="relative-time">Apr 9, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Thanks</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/ahacop"><img alt="@ahacop" class="timeline-comment-avatar" height="48" src="https://avatars3.githubusercontent.com/u/1678968?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-129127103"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="aed0f7281bb0b818acd21d0a45fc8dad">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/ahacop" class="author">ahacop</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-129127103" class="timestamp">
+      <time datetime="2015-08-09T06:02:12Z" is="relative-time">Aug 9, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p><a href="https://github.com/sbull" class="user-mention">@sbull</a> Is this still a problem? Following the steps outlined here I could not reproduce the errors against master.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/sbull"><img alt="@sbull" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/1115369?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-129589543"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="94b2694fbe4550181fd0b73c3f8a184b">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/sbull" class="author">sbull</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-129589543" class="timestamp">
+      <time datetime="2015-08-10T20:06:16Z" is="relative-time">Aug 10, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Still a problem. I've just followed the same steps as above (<a href="https://github.com/rails/rails/issues/19084#issuecomment-91130754" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/19084" data-id="59001146" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#19084 (comment)</a>), and run my test script with increased values like <code>bundle exec rails runner route_helpers_debug.rb 20 30</code> to make the same errors happen (<code>Exception in thread 17, iteration 28: undefined method `url_options' for #&lt;Module:0x007f7e34e8c808&gt;</code>).</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/evanphx"><img alt="@evanphx" class="timeline-comment-avatar" height="48" src="https://avatars1.githubusercontent.com/u/7?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-129598974"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="2f197dee8e4ac0ff6aebbf5a492ff23a">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/evanphx" class="author">evanphx</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-129598974" class="timestamp">
+      <time datetime="2015-08-10T20:37:02Z" is="relative-time">Aug 10, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>The bug is actually in ruby itself. I believe it was fixed in a 2.2 release. /cc @_ko1 <a href="https://github.com/tenderlove" class="user-mention">@tenderlove</a> </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/ahacop"><img alt="@ahacop" class="timeline-comment-avatar" height="48" src="https://avatars3.githubusercontent.com/u/1678968?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-129601721"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="b9ba42fa10de603749fa81b87cd7fb2f">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/ahacop" class="author">ahacop</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-129601721" class="timestamp">
+      <time datetime="2015-08-10T20:46:36Z" is="relative-time">Aug 10, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>I can confirm that I followed the reproduction steps with the increased values suggested by <a href="https://github.com/sbull" class="user-mention">@sbull</a> and did not get any errors while using 2.2.2.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/sbull"><img alt="@sbull" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/1115369?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-129602687"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="8e8e039d04d87764cfc6be57445bb6ec">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/sbull" class="author">sbull</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-129602687" class="timestamp">
+      <time datetime="2015-08-10T20:51:06Z" is="relative-time">Aug 10, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Yeah, I just ran this using 2.2.2 and it still has the bug. Per <a href="https://bugs.ruby-lang.org/issues/10871#note-12">https://bugs.ruby-lang.org/issues/10871#note-12</a>, I don't think it's merged yet.</p>
+
+<p><a href="https://github.com/ahacop" class="user-mention">@ahacop</a>, can you increase those values and try running several times? Basically, keep increasing them, and eventually you'll run into the problem (it's non-deterministic, probably depends on cpu resources etc.)</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/ahacop"><img alt="@ahacop" class="timeline-comment-avatar" height="48" src="https://avatars3.githubusercontent.com/u/1678968?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-129603489"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="46aff796b0b4480be4851a50a26d9d7c">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/ahacop" class="author">ahacop</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-129603489" class="timestamp">
+      <time datetime="2015-08-10T20:55:03Z" is="relative-time">Aug 10, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p><a href="https://github.com/sbull" class="user-mention">@sbull</a> I did eventually run into the error. But, if this is a bug in ruby, can this issue be closed?</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/sbull"><img alt="@sbull" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/1115369?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-129605126"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="34750d30fbb39178880fbfc0ff19c4a0">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/sbull" class="author">sbull</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-129605126" class="timestamp">
+      <time datetime="2015-08-10T21:01:03Z" is="relative-time">Aug 10, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Well, it's a bug in ruby, but that bug is only exhibited by certain styles of code. So if this Rails feature were implemented differently, it may not have the bug.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/evanphx"><img alt="@evanphx" class="timeline-comment-avatar" height="48" src="https://avatars1.githubusercontent.com/u/7?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-129605159"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="e8cc667a18772e762b0671258036e55d">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/evanphx" class="author">evanphx</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-129605159" class="timestamp">
+      <time datetime="2015-08-10T21:01:12Z" is="relative-time">Aug 10, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p><a href="https://github.com/ahacop" class="user-mention">@ahacop</a> It's up to the rails contributors, but I'd leave it open because people running rails hit it and wonder where it's coming from.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/dlackty"><img alt="@dlackty" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/14349?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-165368381"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="742227918ee6a03efa086c4bb7634ab0">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/dlackty" class="author">dlackty</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-165368381" class="timestamp">
+      <time datetime="2015-12-17T07:26:18Z" is="relative-time">Dec 17, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>MRI Ruby 2.2.4 was released and it should fix the issue. </p>
+
+<p><a href="https://www.ruby-lang.org/en/news/2015/12/16/ruby-2-2-4-released/">https://www.ruby-lang.org/en/news/2015/12/16/ruby-2-2-4-released/</a></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+
+<!-- Rendered timeline since 2015-12-16 23:26:18 -->
+<div id="partial-timeline-marker"
+      class="js-timeline-marker js-socket-channel js-updatable-content"
+      data-channel="rails/rails:issue:59001146"
+      data-url="/rails/rails/issues/19084/show_partial?partial=issues%2Ftimeline_marker&amp;since=1450337178"
+      data-last-modified="Thu, 17 Dec 2015 07:26:18 GMT">
+
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/rails/rails/notifications/mark?ids=60296674" class="hidden js-timeline-marker-form" data-form-nonce="21cd192d781dfb1587d3f6962f96514abb58d6c0" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="TWwqzq4T5Uih+HkCg8X9yIDQAgMKRwlrclVE+dPPpp919jn3vij86kmONEUFtuL7dmZK6hN0CiDqpJSrwr93wA==" /></div>
+</form></div>
+
+
+        </div>
+
+          <div class="discussion-timeline-actions">
+                <div class="signed-out-comment">
+  <a href="/join" class="btn btn-primary" rel="nofollow">Sign up for free</a>
+  <strong>to join this conversation on GitHub</strong>.
+  Already have an account?
+  <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Frails%2Frails%2Fissues%2F19084" rel="nofollow">Sign in to comment</a>
+</div>
+
+
+          </div>
+      </div>
+
+    </div>
+    <div class="clear"></div>
+  </div>
+
+</div>
+
+
+  </div>
+  <div class="modal-backdrop"></div>
+</div>
+
+    </div>
+  </div>
+
+    </div>
+
+        <div class="container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+      <li><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+        <li><a href="https://github.com/pricing" data-ga-click="Footer, go to pricing, text:pricing">Pricing</a></li>
+
+    </ul>
+
+    <a href="https://github.com" aria-label="Homepage">
+      <span class="mega-octicon octicon-mark-github " title="GitHub "></span>
+</a>
+    <ul class="site-footer-links">
+      <li>&copy; 2015 <span title="0.16762s from github-fe120-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+        <li><a href="https://help.github.com" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <span class="octicon octicon-x"></span>
+      </button>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/frameworks-ef8eb4a89ee9f3c8b7613307fe589a8f5705817f7cee27bec51ce5e963234abf.js"></script>
+      <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github-4b6b8e7d11ebb7bce85126d3b4130c80041f2ae6d5d6ef8901a8c0c3f7cb80d2.js"></script>
+
+
+
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner hidden">
+      <span class="octicon octicon-alert"></span>
+      <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+      <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    </div>
+  </body>
+</html>
+

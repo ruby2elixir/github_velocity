@@ -1,0 +1,119 @@
+defmodule Logic.IssueItemParser do
+  def parse(issue_html) do
+    issue_doc = Floki.find(issue_html, ".main-content")
+    item      = %Logic.IssueItem{}
+    item = item
+      |> Map.put(:id,                get_id(issue_doc))
+      |> Map.put(:title,             get_title(issue_doc))
+      |> Map.put(:path,              get_path(issue_doc))
+      |> Map.put(:opened_at,         get_opened_at(issue_doc))
+      |> Map.put(:opened_by,         get_opened_by(issue_doc))
+      |> Map.put(:status,            get_status(issue_doc))
+      |> Map.put(:last_activity_at,  get_last_activity_at(issue_doc))
+      |> Map.put(:last_activity_by,  get_last_activity_by(issue_doc))
+
+    case item.status  do
+       "Closed" -> item |> parse_closed_data(issue_doc)
+       _ -> item
+    end
+  end
+
+  def parse_closed_data(item, issue_doc) do
+    item
+      |> Map.put(:closed_by,      get_closed_by(issue_doc))
+      |> Map.put(:closed_at,      get_closed_at(issue_doc))
+  end
+
+  def get_id(issue_doc) do
+    issue_doc
+      |> Floki.find(".gh-header-number")
+      |> Floki.text
+      |> String.replace("#", "")
+  end
+
+  def get_title(issue_doc) do
+    issue_doc
+     |> Floki.find(".js-issue-title")
+     |> Floki.text
+  end
+
+
+  def get_opened_at(issue_doc) do
+    issue_doc
+     |> Floki.find(".gh-header-meta time")
+     |> find_datevalue
+  end
+
+  def get_opened_by(issue_doc) do
+    issue_doc
+     |> Floki.find(".gh-header-meta  .author")
+     |> find_in_attrs("href")
+     |> String.replace("/", "")
+  end
+
+  def get_path(issue_doc) do
+    issue_doc
+      |> Floki.find("#partial-discussion-sidebar")
+      |> find_in_attrs("data-url")
+      |> String.replace("/show_partial?partial=issues%2Fsidebar", "")
+  end
+
+  def get_status(issue_doc) do
+    issue_doc
+      |> Floki.find(".gh-header-meta .flex-table-item")
+      |> Enum.at(0)
+      |> Floki.text
+      |> String.strip
+  end
+
+  def get_closed_by(issue_doc) do
+    issue_doc
+      |> Floki.find(".discussion-item-closed")
+      |> Enum.reverse
+      |> Enum.at(0)
+      |> Floki.find(".author")
+      |> Floki.text
+  end
+
+  def get_closed_at(issue_doc) do
+    issue_doc
+      |> Floki.find(".discussion-item-closed")
+      |> Enum.reverse
+      |> Enum.at(0)
+      |> find_datevalue
+  end
+
+  def get_last_activity_at(issue_doc) do
+    issue_doc
+      |> get_last_comment
+      |> find_datevalue
+  end
+
+  def get_last_activity_by(issue_doc) do
+    issue_doc
+      |> get_last_comment
+      |> Floki.find(".author")
+      |> Floki.text
+  end
+
+  def get_last_comment(issue_doc) do
+    issue_doc
+      |> Floki.find(".js-comment-container")
+      |> Enum.reverse
+      |> Enum.at(0)
+  end
+
+
+  def find_datevalue(elem) do
+    elem
+      |> Floki.find("time")
+      |> find_in_attrs("datetime")
+  end
+
+  defp find_in_attrs(issue_doc, attr_type) do
+    issue_doc
+      |> Floki.attribute(attr_type)
+      |> Enum.at(0)
+  end
+end
+
