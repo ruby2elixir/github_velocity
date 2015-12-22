@@ -14,6 +14,7 @@ defmodule Logic.IssueItemParser do
       |> Map.put(:labels,                      get_labels(issue_doc))
       |> Map.put(:participants,                get_participants(issue_doc))
       |> Map.put(:number_of_participants,      get_number_of_participants(issue_doc))
+      |> Map.put(:number_of_comments,          get_number_of_comments(issue_doc))
 
     case item.status  do
        "Closed" -> item |> parse_closed_data(issue_doc)
@@ -125,6 +126,14 @@ defmodule Logic.IssueItemParser do
 
   def get_number_of_participants(issue_doc) do
     issue_doc |> get_participants |> Enum.count
+  end
+
+  def get_number_of_comments(issue_doc) do
+    s = issue_doc
+      |> Floki.find(".gh-header-meta .flex-table-item-primary")
+      |> Floki.text
+
+    Regex.run(~r/(\d) comments/, s) |> Enum.at(1) |> String.to_integer
   end
 
   ## helper methods

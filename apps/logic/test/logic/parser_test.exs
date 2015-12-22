@@ -14,7 +14,7 @@ defmodule Logic.IssueItemParserTest do
         assert @result.title  == "Major performance regression when preloading has_many_through association"
         assert @result.path  == "/rails/rails/issues/12537"
         assert @result.status  == "Closed"
-
+        assert @result.number_of_comments == 5
       end
 
       it "has right closing data" do
@@ -39,6 +39,7 @@ defmodule Logic.IssueItemParserTest do
         assert @result.opened_at  == "2015-02-26T01:15:31Z"
         assert @result.opened_by  == "sbull"
         assert @result.title  == "Thread bug with Rails::Engine mounted routes, undefined method `url_options'"
+        assert @result.number_of_comments == 9
       end
 
       it "has no closing data" do
@@ -77,7 +78,6 @@ defmodule Logic.IssueItemParserTest do
         assert res.number_of_participants == 5
       end
     end
-
   end
 
 
