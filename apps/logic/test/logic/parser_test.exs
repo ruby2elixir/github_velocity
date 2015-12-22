@@ -48,7 +48,7 @@ defmodule Logic.IssueItemParserTest do
 
       it "has last activity data" do
         assert @result.last_activity_by  == "dlackty"
-        #assert @result.last_activity_at  == "2015-12-19T02:46:15Z"
+        assert @result.last_activity_at  == "2015-12-17T07:26:18Z"
       end
     end
 
