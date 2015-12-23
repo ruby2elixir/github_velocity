@@ -1,4 +1,5 @@
 # Before running jobs:
- ☐ latest_activity_at on issues_list fetching
+ ✔ pick a job queue  @done (15-12-23 19:03) -> toniq
  ☐ storing results in ES
+ ☐ latest_activity_at on issues_list fetching
  ☐ fetching single issue only if the last_activity_at in the database is older than that from issues_list
