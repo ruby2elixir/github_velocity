@@ -5,7 +5,7 @@ defmodule Logic.IssueItemParserTest do
   describe "Parser" do
 
     describe "closed issue" do
-      @result "issue_rails_12537.html" |> TestHelper.fixture |> IssueItemParser.parse
+      @result "issues/rails_12537.html" |> TestHelper.fixture |> IssueItemParser.parse
 
       it "is parsed to proper structs" do
         assert @result.id  == "12537"
@@ -30,7 +30,7 @@ defmodule Logic.IssueItemParserTest do
 
 
     describe "open issue" do
-      @result "issue_rails_19084.html" |> TestHelper.fixture |> IssueItemParser.parse
+      @result "issues/rails_19084.html" |> TestHelper.fixture |> IssueItemParser.parse
 
       it "is parsed to proper structs" do
         assert @result.id  == "19084"
@@ -55,25 +55,25 @@ defmodule Logic.IssueItemParserTest do
 
     describe "labels" do
       it "works with present labels" do
-        res = "issue_rails_19084.html" |> TestHelper.fixture |> IssueItemParser.parse
+        res = "issues/rails_19084.html" |> TestHelper.fixture |> IssueItemParser.parse
         assert res.labels == ["actionpack", "engines", "With reproduction steps"]
       end
 
       it "works without labels" do
-        res = "issue_rails_19332.html" |> TestHelper.fixture |> IssueItemParser.parse
+        res = "issues/rails_19332.html" |> TestHelper.fixture |> IssueItemParser.parse
         assert res.labels == []
       end
     end
 
     describe "participants" do
       it "works" do
-        res = "issue_rails_19084.html" |> TestHelper.fixture |> IssueItemParser.parse
+        res = "issues/rails_19084.html" |> TestHelper.fixture |> IssueItemParser.parse
         assert res.participants == ["sbull", "evanphx", "jvanbaarsen", "rafaelfranca", "ahacop", "dlackty", "robin850"]
         assert res.number_of_participants == 7
       end
 
       it "works 2.nd example" do
-        res = "issue_rails_19332.html" |> TestHelper.fixture |> IssueItemParser.parse
+        res = "issues/rails_19332.html" |> TestHelper.fixture |> IssueItemParser.parse
         assert res.participants == ["halorgium", "matthewd", "tarcieri", "spscream", "TiagoCardoso1983"]
         assert res.number_of_participants == 5
       end
@@ -81,7 +81,7 @@ defmodule Logic.IssueItemParserTest do
 
     describe "get_current_time" do
       it "works" do
-        res = "issue_rails_19332.html" |> TestHelper.fixture |> IssueItemParser.parse
+        res = "issues/rails_19332.html" |> TestHelper.fixture |> IssueItemParser.parse
         refute res.updated_at == ""
         assert res.updated_at =~  Regex.compile("#{Timex.Date.now.year}") |> Prelude.ok
       end
