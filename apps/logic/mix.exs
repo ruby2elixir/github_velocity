@@ -16,7 +16,7 @@ defmodule Logic.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :tzdata, :httpotion, :quantum],
+    [applications: [:logger, :tzdata, :httpotion, :quantum, :toniq],
      mod: {Logic, []}]
   end
 
