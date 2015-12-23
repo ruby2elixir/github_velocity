@@ -1,4 +1,5 @@
 defmodule Logic.IssueItemParser do
+  use Logic.Util.Parser
   def parse(issue_html) do
     issue_doc = Floki.find(issue_html, ".main-content")
     item      = %Logic.IssueItem{}
@@ -137,35 +138,4 @@ defmodule Logic.IssueItemParser do
 
     Regex.run(~r/(\d) comments/, s) |> Enum.at(1) |> String.to_integer
   end
-
-
-  def get_current_time do
-    Timex.Date.now |>  Timex.DateFormat.format("{ISOz}") |> Prelude.ok
-  end
-
-  ## helper methods
-  defp find_author(elem) do
-    elem
-      |> Floki.find(".author")
-      |> Floki.text
-  end
-
-  defp find_datevalue(elem) do
-    elem
-      |> Floki.find("time")
-      |> find_in_attrs("datetime")
-  end
-
-  defp last(list) do
-    list
-      |> Enum.reverse
-      |> Enum.at(0)
-  end
-
-  defp find_in_attrs(issue_doc, attr_type) do
-    issue_doc
-      |> Floki.attribute(attr_type)
-      |> Enum.at(0)
-  end
 end
-
