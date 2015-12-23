@@ -16,7 +16,7 @@ defmodule Logic.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :tzdata, :httpotion],
+    [applications: [:logger, :tzdata, :httpotion, :quantum],
      mod: {Logic, []}]
   end
 
@@ -41,8 +41,8 @@ defmodule Logic.Mixfile do
       {:poison, "1.5.0"},
       {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.2"},
       {:httpotion, "~> 2.1.0"},
-      {:exq, "~> 0.5.0"},
-      {:exq_ui, "~> 0.5.0"},
+      {:toniq, "~> 1.0"},
+      {:quantum, ">= 1.6.1"},
       {:timex, "0.19.5"},
       {:ex_spec, "~> 1.0.0", only: :test}
     ]

@@ -28,13 +28,3 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
-
-
-config :exq,
-  host: "127.0.0.1",
-  port: 6379,
-  namespace: "exq",
-  queues: [{"issue_list", 5}, {"issue_item", 5}],
-  # job retries
-  scheduler_enable: true,
-  max_retries: 25
