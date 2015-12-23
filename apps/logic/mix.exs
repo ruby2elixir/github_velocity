@@ -42,6 +42,7 @@ defmodule Logic.Mixfile do
       {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.2"},
       {:httpotion, "~> 2.1.0"},
       {:exq, "~> 0.5.0"},
+      {:exq_ui, "~> 0.5.0"},
       {:timex, "0.19.5"},
       {:ex_spec, "~> 1.0.0", only: :test}
     ]
