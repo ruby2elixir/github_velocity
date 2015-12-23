@@ -86,7 +86,16 @@ defmodule Logic.IssueItemParserTest do
         assert res.updated_at =~  Regex.compile("#{Timex.Date.now.year}") |> Prelude.ok
       end
     end
-  end
 
+    describe "closed is not the last activity" do
+      it "works fine" do
+        res = "issues/rails_4519.html" |> TestHelper.fixture |> IssueItemParser.parse
+
+        assert res.status == "closed"
+        assert res.closed_at == "2012-01-18T14:39:16Z"
+        assert res.last_activity_at == "2015-12-22T19:59:23Z"
+      end
+    end
+  end
 
 end
