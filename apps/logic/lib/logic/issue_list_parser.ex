@@ -48,10 +48,11 @@ defmodule Logic.IssueListItemParser do
   end
 
   def get_id(elem) do
-    elem |> Floki.find(".issue-title-link")
-    |> find_in_attrs("href")
-    |> String.split("/issues/")
-    |> Enum.at(1)
+    elem
+      |> Floki.find(".issue-title-link")
+      |> find_in_attrs("href")
+      |> String.split("/issues/")
+      |> Enum.at(1)
   end
 
   def get_status(elem) do
