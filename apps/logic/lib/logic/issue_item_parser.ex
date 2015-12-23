@@ -101,17 +101,28 @@ defmodule Logic.IssueItemParser do
   end
 
   def get_last_action(issue_doc) do
-    # "#partial-timeline-marker" is the last element after all activities
-    # we check wether it has got a comment sibling, if not, we asume the closed item was last activity
-    case Floki.find(issue_doc, ".js-comment-container + #partial-timeline-marker") do
-      [] ->
-        issue_doc
-        |> Floki.find(".discussion-item-closed")
-      _  ->
-        issue_doc
-        |> Floki.find(".js-comment-container")
-        |> last
+    #last activity types:
+      # .discussion-item
+      # .timeline-comment-wrapper
+
+    discussion_item = get_last_elem(issue_doc, ".discussion-item")
+    comment_item    = get_last_elem(issue_doc, ".timeline-comment-wrapper")
+    return_latest_el(discussion_item, comment_item)
+  end
+
+  def return_latest_el(a, b) do
+    case {a, b} do
+      {nil, b} -> b
+      {a, nil} -> a
+      {a, b}   -> [a,b] |> (Enum.sort_by(&find_datevalue/1 )) |> Enum.at(1)
     end
+  end
+
+  def get_last_elem(issue_doc, finder) do
+    issue_doc
+      |> Floki.find(finder)
+      |> Enum.reverse
+      |> Enum.at(0)
   end
 
 

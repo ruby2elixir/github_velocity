@@ -17,14 +17,18 @@ defmodule Logic.IssueItemParserTest do
         assert @result.number_of_comments == 15
       end
 
+
+
       it "has right closing data" do
         assert @result.closed_by  == "tenderlove"
         assert @result.closed_at  == "2015-12-19T02:46:15Z"
       end
 
+      @tag runme: true
       it "has last activity data" do
-        assert @result.last_activity_at  == "2015-12-19T02:46:15Z"
         assert @result.last_activity_by  == "tenderlove"
+        assert @result.last_activity_at  == "2015-12-19T02:46:15Z"
+
       end
     end
 
@@ -39,6 +43,20 @@ defmodule Logic.IssueItemParserTest do
         assert @result.path  == "/rails/rails/issues/1"
         assert @result.status  == "closed"
         assert @result.number_of_comments == 10
+      end
+    end
+
+    describe "fresh open issues last activity fix" do
+      @result "issues/rails_22773.html" |> TestHelper.fixture |> IssueItemParser.parse
+
+      it "is parsed to proper structs" do
+        assert @result.id  == "22773"
+        assert @result.opened_at  == "2015-12-23T17:16:20Z"
+        assert @result.opened_by  == "rafaelfranca"
+        assert @result.status  == "open"
+        assert @result.last_activity_by == "rafaelfranca"
+        assert @result.last_activity_at == "2015-12-23T17:17:44Z"
+        assert @result.number_of_comments == 1
       end
     end
 
