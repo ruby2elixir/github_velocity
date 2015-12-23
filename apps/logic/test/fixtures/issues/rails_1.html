@@ -1,0 +1,2894 @@
+<!--
+closed, 10 comments
+ -->
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=1020">
+
+
+    <title>Rails is not Django · Issue #1 · rails/rails · GitHub</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="Rails is not Django · Issue #1 · rails/rails" name="twitter:title" /><meta content="I have an issue with this." name="twitter:description" /><meta content="https://avatars1.githubusercontent.com/u/45870?v=3&amp;s=400" name="twitter:image:src" />
+      <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars1.githubusercontent.com/u/45870?v=3&amp;s=400" property="og:image" /><meta content="Rails is not Django · Issue #1 · rails/rails" property="og:title" /><meta content="https://github.com/rails/rails/issues/1" property="og:url" /><meta content="I have an issue with this." property="og:description" />
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+
+    <meta name="pjax-timeout" content="1000">
+
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_issues" data-pjax-transient>
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="25783735:6923:23999B45:567B1767" name="octolytics-dimension-request_id" />
+<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/issues/show" data-pjax-transient="true" name="analytics-location" />
+<meta content="Rails, view, issues#show" data-pjax-transient="true" name="analytics-event" />
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged Out">
+
+
+
+        <meta name="hostname" content="github.com">
+    <meta name="user-login" content="">
+
+        <meta name="expected-hostname" content="github.com">
+
+      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#4078c0">
+      <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+    <meta content="d4a8e1eb4ddd998f44240f1279d5edb5b16a1285" name="form-nonce" />
+
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-2037283749006a7ebc37dc5a63a365e8cde9e5d0099e83d4a77bba85b03a6623.css" media="all" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github2-87b394aa7bb776e9e05abfb54eaa1193404e767a3720d64ff2c8f64c7cfb432b.css" media="all" rel="stylesheet" />
+
+
+
+
+    <meta http-equiv="x-pjax-version" content="696c3d92b2b36833513e39f2a164890b">
+
+
+  <meta name="description" content="rails - Ruby on Rails">
+  <meta name="go-import" content="github.com/rails/rails git https://github.com/rails/rails.git">
+
+  <meta content="4223" name="octolytics-dimension-user_id" /><meta content="rails" name="octolytics-dimension-user_login" /><meta content="8514" name="octolytics-dimension-repository_id" /><meta content="rails/rails" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="8514" name="octolytics-dimension-repository_network_root_id" /><meta content="rails/rails" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="https://github.com/rails/rails/commits/master.atom" rel="alternate" title="Recent Commits to rails:master" type="application/atom+xml">
+
+  </head>
+
+
+  <body class="logged_out   env-production  vis-public">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+
+
+
+
+
+
+
+
+      <div class="header header-logged-out" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-wordmark" href="https://github.com/" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+      <span class="mega-octicon octicon-logo-github"></span>
+    </a>
+
+    <div class="header-actions" role="navigation">
+        <a class="btn btn-primary" href="/join" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">Sign up</a>
+      <a class="btn" href="/login?return_to=%2Frails%2Frails%2Fissues%2F1" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
+    </div>
+
+    <div class="site-search repo-scope js-site-search" role="search">
+      <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/rails/rails/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/rails/rails/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <label class="js-chromeless-input-container form-control">
+    <div class="scope-badge">This repository</div>
+    <input type="text"
+      class="js-site-search-focus js-site-search-field is-clearable chromeless-input"
+      data-hotkey="s"
+      name="q"
+      placeholder="Search"
+      aria-label="Search this repository"
+      data-global-scope-placeholder="Search GitHub"
+      data-repo-scope-placeholder="Search"
+      tabindex="1"
+      autocapitalize="off">
+  </label>
+</form>
+    </div>
+
+      <ul class="header-nav left" role="navigation">
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="/explore" data-ga-click="(Logged out) Header, go to explore, text:explore">Explore</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="/features" data-ga-click="(Logged out) Header, go to features, text:features">Features</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://enterprise.github.com/" data-ga-click="(Logged out) Header, go to enterprise, text:enterprise">Enterprise</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="/pricing" data-ga-click="(Logged out) Header, go to pricing, text:pricing">Pricing</a>
+          </li>
+      </ul>
+
+  </div>
+</div>
+
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+      <div id="js-flash-container">
+</div>
+
+
+    <div role="main" class="main-content">
+        <div itemscope itemtype="http://schema.org/WebPage">
+    <div id="js-repo-pjax-container" class="context-loader-container js-repo-nav-next" data-pjax-container>
+
+<div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+  <div class="container repohead-details-container">
+
+
+
+<ul class="pagehead-actions">
+
+  <li>
+      <a href="/login?return_to=%2Frails%2Frails"
+    class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+    aria-label="You must be signed in to watch a repository" rel="nofollow">
+    <span class="octicon octicon-eye"></span>
+    Watch
+  </a>
+  <a class="social-count" href="/rails/rails/watchers">
+    2,088
+  </a>
+
+  </li>
+
+  <li>
+      <a href="/login?return_to=%2Frails%2Frails"
+    class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+    aria-label="You must be signed in to star a repository" rel="nofollow">
+    <span class="octicon octicon-star "></span>
+    Star
+  </a>
+
+    <a class="social-count js-social-count" href="/rails/rails/stargazers">
+      28,865
+    </a>
+
+  </li>
+
+  <li>
+      <a href="/login?return_to=%2Frails%2Frails"
+        class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+        aria-label="You must be signed in to fork a repository" rel="nofollow">
+        <span class="octicon octicon-repo-forked "></span>
+        Fork
+      </a>
+
+    <a href="/rails/rails/network" class="social-count">
+      11,698
+    </a>
+  </li>
+</ul>
+
+    <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public ">
+  <span class="octicon octicon-repo "></span>
+  <span class="author"><a href="/rails" class="url fn" itemprop="url" rel="author"><span itemprop="title">rails</span></a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong><a href="/rails/rails" data-pjax="#js-repo-pjax-container">rails</a></strong>
+
+  <span class="page-context-loader">
+    <img alt="" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+  </span>
+
+</h1>
+
+  </div>
+  <div class="container">
+
+<nav class="reponav js-repo-nav js-sidenav-container-pjax js-octicon-loaders"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container">
+
+  <a href="/rails/rails" aria-label="Code" class="js-selected-navigation-item reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /rails/rails">
+    <span class="octicon octicon-code "></span>
+    Code
+</a>
+    <a href="/rails/rails/issues" aria-selected="true" class="js-selected-navigation-item selected reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /rails/rails/issues">
+      <span class="octicon octicon-issue-opened "></span>
+      Issues
+      <span class="counter">397</span>
+</a>
+  <a href="/rails/rails/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /rails/rails/pulls">
+    <span class="octicon octicon-git-pull-request "></span>
+    Pull requests
+    <span class="counter">455</span>
+</a>
+
+  <a href="/rails/rails/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /rails/rails/pulse">
+    <span class="octicon octicon-pulse "></span>
+    Pulse
+</a>
+  <a href="/rails/rails/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /rails/rails/graphs">
+    <span class="octicon octicon-graph "></span>
+    Graphs
+</a>
+
+</nav>
+
+  </div>
+</div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+
+<style type="text/css" media="screen">
+  span.labelstyle-bfdadc, .linked-labelstyle-bfdadc {  background-color: #bfdadc !important;  color: #2c3233 !important;}.labelstyle-bfdadc.selected {  background-color: #bfdadc !important;  color: #2c3233 !important;}.label-select-menu .labelstyle-bfdadc.selected {  background:rgba(191, 218, 220, 0.12) !important;  color: #849799 !important;}
+
+span.labelstyle-8B00FC, .linked-labelstyle-8B00FC {  background-color: #8B00FC !important;  color: #fff !important;}.labelstyle-8B00FC.selected {  background-color: #8B00FC !important;  color: #fff !important;}.label-select-menu .labelstyle-8B00FC.selected {  background:rgba(139, 0, 252, 0.12) !important;  color: #540099 !important;}
+
+span.labelstyle-FFF700, .linked-labelstyle-FFF700 {  background-color: #FFF700 !important;  color: #333100 !important;}.labelstyle-FFF700.selected {  background-color: #FFF700 !important;  color: #333100 !important;}.label-select-menu .labelstyle-FFF700.selected {  background:rgba(255, 247, 0, 0.12) !important;  color: #999400 !important;}
+
+span.labelstyle-d7e102, .linked-labelstyle-d7e102 {  background-color: #d7e102 !important;  color: #303300 !important;}.labelstyle-d7e102.selected {  background-color: #d7e102 !important;  color: #303300 !important;}.label-select-menu .labelstyle-d7e102.selected {  background:rgba(215, 225, 2, 0.12) !important;  color: #929901 !important;}
+
+span.labelstyle-5319e7, .linked-labelstyle-5319e7 {  background-color: #5319e7 !important;  color: #fff !important;}.labelstyle-5319e7.selected {  background-color: #5319e7 !important;  color: #fff !important;}.label-select-menu .labelstyle-5319e7.selected {  background:rgba(83, 25, 231, 0.12) !important;  color: #361099 !important;}
+
+span.labelstyle-00E5FF, .linked-labelstyle-00E5FF {  background-color: #00E5FF !important;  color: #002d33 !important;}.labelstyle-00E5FF.selected {  background-color: #00E5FF !important;  color: #002d33 !important;}.label-select-menu .labelstyle-00E5FF.selected {  background:rgba(0, 229, 255, 0.12) !important;  color: #008999 !important;}
+
+span.labelstyle-0b02e1, .linked-labelstyle-0b02e1 {  background-color: #0b02e1 !important;  color: #fff !important;}.labelstyle-0b02e1.selected {  background-color: #0b02e1 !important;  color: #fff !important;}.label-select-menu .labelstyle-0b02e1.selected {  background:rgba(11, 2, 225, 0.30720418300653585) !important;  color: #040066 !important;}
+
+span.labelstyle-FC9300, .linked-labelstyle-FC9300 {  background-color: #FC9300 !important;  color: #331d00 !important;}.labelstyle-FC9300.selected {  background-color: #FC9300 !important;  color: #331d00 !important;}.label-select-menu .labelstyle-FC9300.selected {  background:rgba(252, 147, 0, 0.12) !important;  color: #995900 !important;}
+
+span.labelstyle-ededed, .linked-labelstyle-ededed {  background-color: #ededed !important;  color: #333333 !important;}.labelstyle-ededed.selected {  background-color: #ededed !important;  color: #333333 !important;}.label-select-menu .labelstyle-ededed.selected {  background:rgba(237, 237, 237, 0.12) !important;  color: #999999 !important;}
+
+span.labelstyle-006b75, .linked-labelstyle-006b75 {  background-color: #006b75 !important;  color: #fff !important;}.labelstyle-006b75.selected {  background-color: #006b75 !important;  color: #fff !important;}.label-select-menu .labelstyle-006b75.selected {  background:rgba(0, 107, 117, 0.12) !important;  color: #008b99 !important;}
+
+span.labelstyle-02d7e1, .linked-labelstyle-02d7e1 {  background-color: #02d7e1 !important;  color: #003033 !important;}.labelstyle-02d7e1.selected {  background-color: #02d7e1 !important;  color: #003033 !important;}.label-select-menu .labelstyle-02d7e1.selected {  background:rgba(2, 215, 225, 0.12) !important;  color: #019299 !important;}
+
+span.labelstyle-e102d8, .linked-labelstyle-e102d8 {  background-color: #e102d8 !important;  color: #fff !important;}.labelstyle-e102d8.selected {  background-color: #e102d8 !important;  color: #fff !important;}.label-select-menu .labelstyle-e102d8.selected {  background:rgba(225, 2, 216, 0.12) !important;  color: #990192 !important;}
+
+span.labelstyle-d4c5f9, .linked-labelstyle-d4c5f9 {  background-color: #d4c5f9 !important;  color: #2b2833 !important;}.labelstyle-d4c5f9.selected {  background-color: #d4c5f9 !important;  color: #2b2833 !important;}.label-select-menu .labelstyle-d4c5f9.selected {  background:rgba(212, 197, 249, 0.12) !important;  color: #827999 !important;}
+
+span.labelstyle-eb6420, .linked-labelstyle-eb6420 {  background-color: #eb6420 !important;  color: #fff !important;}.labelstyle-eb6420.selected {  background-color: #eb6420 !important;  color: #fff !important;}.label-select-menu .labelstyle-eb6420.selected {  background:rgba(235, 100, 32, 0.12) !important;  color: #994114 !important;}
+
+span.labelstyle-e10c02, .linked-labelstyle-e10c02 {  background-color: #e10c02 !important;  color: #fff !important;}.labelstyle-e10c02.selected {  background-color: #e10c02 !important;  color: #fff !important;}.label-select-menu .labelstyle-e10c02.selected {  background:rgba(225, 12, 2, 0.12) !important;  color: #990801 !important;}
+
+span.labelstyle-000000, .linked-labelstyle-000000 {  background-color: #000000 !important;  color: #fff !important;}.labelstyle-000000.selected {  background-color: #000000 !important;  color: #fff !important;}.label-select-menu .labelstyle-000000.selected {  background:rgba(247, 247, 247, 1.0) !important;  color: #666666 !important;}
+
+span.labelstyle-f7c6c7, .linked-labelstyle-f7c6c7 {  background-color: #f7c6c7 !important;  color: #332829 !important;}.labelstyle-f7c6c7.selected {  background-color: #f7c6c7 !important;  color: #332829 !important;}.label-select-menu .labelstyle-f7c6c7.selected {  background:rgba(247, 198, 199, 0.12) !important;  color: #997a7b !important;}
+
+span.labelstyle-fbca04, .linked-labelstyle-fbca04 {  background-color: #fbca04 !important;  color: #332900 !important;}.labelstyle-fbca04.selected {  background-color: #fbca04 !important;  color: #332900 !important;}.label-select-menu .labelstyle-fbca04.selected {  background:rgba(251, 202, 4, 0.12) !important;  color: #997b02 !important;}
+
+span.labelstyle-8BE06E, .linked-labelstyle-8BE06E {  background-color: #8BE06E !important;  color: #1f3219 !important;}.labelstyle-8BE06E.selected {  background-color: #8BE06E !important;  color: #1f3219 !important;}.label-select-menu .labelstyle-8BE06E.selected {  background:rgba(139, 224, 110, 0.12) !important;  color: #5e994b !important;}
+
+span.labelstyle-e11d21, .linked-labelstyle-e11d21 {  background-color: #e11d21 !important;  color: #fff !important;}.labelstyle-e11d21.selected {  background-color: #e11d21 !important;  color: #fff !important;}.label-select-menu .labelstyle-e11d21.selected {  background:rgba(225, 29, 33, 0.12) !important;  color: #991316 !important;}
+
+span.labelstyle-D94A4A, .linked-labelstyle-D94A4A {  background-color: #D94A4A !important;  color: #fff !important;}.labelstyle-D94A4A.selected {  background-color: #D94A4A !important;  color: #fff !important;}.label-select-menu .labelstyle-D94A4A.selected {  background:rgba(217, 74, 74, 0.12) !important;  color: #993434 !important;}
+
+span.labelstyle-444444, .linked-labelstyle-444444 {  background-color: #444444 !important;  color: #fff !important;}.labelstyle-444444.selected {  background-color: #444444 !important;  color: #fff !important;}.label-select-menu .labelstyle-444444.selected {  background:rgba(68, 68, 68, 0.12) !important;  color: #999999 !important;}
+
+span.labelstyle-009800, .linked-labelstyle-009800 {  background-color: #009800 !important;  color: #fff !important;}.labelstyle-009800.selected {  background-color: #009800 !important;  color: #fff !important;}.label-select-menu .labelstyle-009800.selected {  background:rgba(0, 152, 0, 0.12) !important;  color: #009900 !important;}
+</style>
+
+<div class="issues-listing" data-pjax>
+  <div class="context-loader large-format-loader">
+  <p><img alt="" height="64" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-128.gif" width="64" /></p>
+  <p>Loading…</p>
+</div>
+
+    <div id="show_issue" class="js-issues-results">
+
+
+  <div
+    id="partial-discussion-header"
+    class="gh-header js-details-container js-socket-channel js-updatable-content issue"
+    data-channel="rails/rails:issue:132"
+    data-url="/rails/rails/issues/1/show_partial?partial=issues%2Ftitle">
+
+  <div class="gh-header-show ">
+      <div class="gh-header-actions">
+          <a href="/rails/rails/issues/new" class="btn btn-sm btn-primary right" data-hotkey="c">
+            New issue
+          </a>
+      </div>
+
+    <h1 class="gh-header-title">
+      <span class="js-issue-title">Rails is not Django</span>
+      <span class="gh-header-number">#1</span>
+    </h1>
+  </div>
+
+
+  <div class="flex-table gh-header-meta">
+    <div class="flex-table-item">
+        <div class="state state-closed">
+          <span class="octicon octicon-issue-closed "></span>
+          Closed
+        </div>
+    </div>
+    <div class="flex-table-item flex-table-item-primary">
+        <a href="/leah" class="author">leah</a> opened this <span class="noun">Issue</span> <time datetime="2009-04-01T04:24:23Z" is="relative-time">Apr 1, 2009</time>
+        &middot; 10 comments
+    </div>
+  </div>
+</div>
+
+
+    <div id="discussion_bucket" class="tab-content clearfix">
+      <div id="partial-discussion-sidebar"
+     class="discussion-sidebar js-socket-channel js-updatable-content"
+     data-channel="rails/rails:issue:132"
+     data-url="/rails/rails/issues/1/show_partial?partial=issues%2Fsidebar">
+
+  <div class="discussion-sidebar-item sidebar-labels js-discussion-sidebar-item">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/rails/rails/issues/1?partial=issues%2Fsidebar%2Fshow%2Flabels" class="js-issue-sidebar-form" data-form-nonce="d4a8e1eb4ddd998f44240f1279d5edb5b16a1285" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="0bckqzGR1pGtGBaKji/SFEQJsbwxyQJsweEaoTGevJCrN6dcJvylySXOruo86NlofUqeW8KzlyA/coxI1MfeBA==" /></div>
+
+  <h3 class="discussion-sidebar-heading">
+    Labels
+  </h3>
+
+
+    <div class="labels css-truncate">
+    None yet
+</div>
+
+</form></div>
+
+  <div class="discussion-sidebar-item sidebar-milestone js-discussion-sidebar-item">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/rails/rails/issues/1/set_milestone?partial=issues%2Fsidebar%2Fshow%2Fmilestone" class="js-issue-sidebar-form" data-form-nonce="d4a8e1eb4ddd998f44240f1279d5edb5b16a1285" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="H7tX7iry/KuGAuB91H04hVWjGXG9FlBxF3bQbCikd/0kJCjph1ak6krXLRJq4C5mgz3qLos8dekpNd6aC1G0nw==" /></div>
+
+  <h3 class="discussion-sidebar-heading">
+    Milestone
+  </h3>
+
+
+      No milestone
+
+</form></div>
+
+  <div class="discussion-sidebar-item sidebar-assignee js-discussion-sidebar-item">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/rails/rails/issues/1?partial=issues%2Fsidebar%2Fshow%2Fassignee" class="js-issue-sidebar-form" data-form-nonce="d4a8e1eb4ddd998f44240f1279d5edb5b16a1285" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="5BBO5Fq9z/Jz6DxFy8Daz48IiRleOeAkzxZuc4eg1kba+6Dt680+16qLwl5ND6JiURoEM92MDTTT64yD5RplwA==" /></div>
+
+  <h3 class="discussion-sidebar-heading">
+    Assignee
+  </h3>
+
+
+    <span class="css-truncate">
+      No one assigned
+</span>
+
+</form></div>
+
+
+  <div id="partial-users-participants" class="discussion-sidebar-item">
+  <div class="participation">
+
+    <h3 class="discussion-sidebar-heading">
+      11 participants
+    </h3>
+    <div class="participation-avatars">
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="leah" href="/leah"><img alt="@leah" class="avatar" height="20" src="https://avatars3.githubusercontent.com/u/45870?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="AbeEstrada" href="/AbeEstrada"><img alt="@AbeEstrada" class="avatar" height="20" src="https://avatars2.githubusercontent.com/u/7937?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="dodeja" href="/dodeja"><img alt="@dodeja" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/22015?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="boblmartens" href="/boblmartens"><img alt="@boblmartens" class="avatar" height="20" src="https://avatars2.githubusercontent.com/u/12119?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="nofxx" href="/nofxx"><img alt="@nofxx" class="avatar" height="20" src="https://avatars3.githubusercontent.com/u/6831?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="rabble" href="/rabble"><img alt="@rabble" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/76?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="mattly" href="/mattly"><img alt="@mattly" class="avatar" height="20" src="https://avatars2.githubusercontent.com/u/891?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="dmathieu" href="/dmathieu"><img alt="@dmathieu" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/9347?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="botanicus" href="/botanicus"><img alt="@botanicus" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/6171?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="archonic" href="/archonic"><img alt="@archonic" class="avatar" height="20" src="https://avatars3.githubusercontent.com/u/588846?v=3&amp;s=40" width="20" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="KMStanton" href="/KMStanton"><img alt="@KMStanton" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/8999869?v=3&amp;s=40" width="20" /> </a>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+      <div class="discussion-timeline js-quote-selection-container ">
+
+        <div class="js-discussion js-socket-channel" data-channel="rails/rails:marked-as-read:132">
+
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/leah"><img alt="@leah" class="timeline-comment-avatar" height="48" src="https://avatars3.githubusercontent.com/u/45870?v=3&amp;s=96" width="48" /></a>
+    <div id="issue-132"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="53057a2aeb1162349042d4c8e5fba0c1">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/leah" class="author">leah</a>
+    </strong>
+
+    commented
+
+    <a href="#issue-132" class="timestamp">
+      <time datetime="2009-04-01T04:24:23Z" is="relative-time">Apr 1, 2009</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>I have an issue with this.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/AbeEstrada"><img alt="@AbeEstrada" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/7937?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-169"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="39c20c678c6c47dbfbfdddf21c926927">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/AbeEstrada" class="author">AbeEstrada</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-169" class="timestamp">
+      <time datetime="2009-04-16T23:00:57Z" is="relative-time">Apr 16, 2009</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>That is a big issue.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/dodeja"><img alt="@dodeja" class="timeline-comment-avatar" height="48" src="https://avatars0.githubusercontent.com/u/22015?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-184"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="9a5e7748377614ec6c5ed54f553dfcb3">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/dodeja" class="author">dodeja</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-184" class="timestamp">
+      <time datetime="2009-04-16T23:25:30Z" is="relative-time">Apr 16, 2009</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>This is a problem.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/boblmartens"><img alt="@boblmartens" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/12119?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-212"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="b73159a18abf703da80b8211bec481eb">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/boblmartens" class="author">boblmartens</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-212" class="timestamp">
+      <time datetime="2009-04-17T00:32:43Z" is="relative-time">Apr 17, 2009</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>I’m glad it isn’t.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/nofxx"><img alt="@nofxx" class="timeline-comment-avatar" height="48" src="https://avatars3.githubusercontent.com/u/6831?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-512"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="ee66fcdeb0e4be76b97fa0f2c136690f">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/nofxx" class="author">nofxx</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-512" class="timestamp">
+      <time datetime="2009-04-17T15:49:54Z" is="relative-time">Apr 17, 2009</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>I`m sure someone is working on a fix.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/rabble"><img alt="@rabble" class="timeline-comment-avatar" height="48" src="https://avatars0.githubusercontent.com/u/76?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-583"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="491c273b9a86c077b0ded897d78cef4a">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/rabble" class="author">rabble</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-583" class="timestamp">
+      <time datetime="2009-04-17T20:05:43Z" is="relative-time">Apr 17, 2009</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Please don’t fix.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/mattly"><img alt="@mattly" class="timeline-comment-avatar" height="48" src="https://avatars2.githubusercontent.com/u/891?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-585"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="4ea776d5d56d837799aea0b94d9a7dce">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/mattly" class="author">mattly</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-585" class="timestamp">
+      <time datetime="2009-04-17T20:06:33Z" is="relative-time">Apr 17, 2009</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>-1 please don’t fix. don’t you python people have anything better to do? like scoop up pony power poop?</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/dmathieu"><img alt="@dmathieu" class="timeline-comment-avatar" height="48" src="https://avatars0.githubusercontent.com/u/9347?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-2115"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container collaborator-comment"
+     data-body-version="4c7ce299b0f8b4e66632d8bae5ae1b23">
+
+  <div class="timeline-comment-header ">
+
+
+    <span class="timeline-comment-label">Collaborator</span>
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/dmathieu" class="author">dmathieu</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-2115" class="timestamp">
+      <time datetime="2009-04-21T15:52:26Z" is="relative-time">Apr 21, 2009</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Djan What ? How do you even pronounce it ??</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/botanicus"><img alt="@botanicus" class="timeline-comment-avatar" height="48" src="https://avatars0.githubusercontent.com/u/6171?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-2940"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="a2fd85248f9f9e7f12265e72d92bc9e4">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/botanicus" class="author">botanicus</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-2940" class="timestamp">
+      <time datetime="2009-04-24T11:01:24Z" is="relative-time">Apr 24, 2009</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Here is the fix: <a href="https://github.com/botanicus/rango/tree/master">http://github.com/botanicus/rango/tree/master</a></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-151723e">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@Mochaleaf" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/863132?v=3&amp;s=32" width="16" />
+      <a href="/Mochaleaf" class="author" truncate="true">Mochaleaf</a>
+
+      referenced
+      this issue
+      from a commit
+        in Mochaleaf/rails
+      <a href="#ref-commit-151723e" class="timestamp">
+        <time datetime="2011-07-23T23:19:24Z" is="relative-time">Jul 23, 2011</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+    data-channel="rails/rails:commit:151723ed688eb161d9e6adc80a780912d9346940"
+    data-url="/rails/rails/commit/151723ed688eb161d9e6adc80a780912d9346940/show_partial?partial=commit%2Fcondensed"
+  >
+
+  <td class="commit-icon">
+      <span class="octicon octicon-git-commit "></span>
+  </td>
+
+    <td class="commit-gravatar">
+      <a href="/leepfrog"><img alt="@leepfrog" class="avatar avatar-small" height="16" src="https://avatars0.githubusercontent.com/u/119997?v=3&amp;s=32" width="16" /></a>
+    </td>
+
+    <td class="commit-author">
+      <strong><a href="/leepfrog" class="author" rel="contributor">leepfrog</a></strong>
+    </td>
+
+  <td class="commit-message">
+      <code><a href="https://github.com/rails/rails/issues/759" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/759" data-id="904459" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">rails#759</a> <a href="/Mochaleaf/rails/commit/151723ed688eb161d9e6adc80a780912d9346940" class="message" data-pjax="true" title="https://github.com/rails/rails/issues/759 -
+
+There are two issues here:
+
+#1) ActiveSupport::Date current method has a misleading conditional. Time.zone is always returned because config.time_zone is set by default on a project.
+
+#2) ActiveSupport::Date does not override the Date.today method. This means that the core ruby library's .today method is called which may be based off of a different time zone than what's set in config.time_zone.
+
+Submitting a pull request.">-</a></code>
+
+        <span class="hidden-text-expander inline">
+          <a href="#" class="js-details-target">&hellip;</a>
+        </span>
+        <div class="commit-desc"><pre class="text-small">There are two issues here:
+
+<a href="https://github.com/rails/rails/issues/1" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/1" data-id="132" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#1</a>) ActiveSupport::Date current method has a misleading conditional. Time.zone is always returned because config.time_zone is set by default on a project.
+
+<a href="https://github.com/rails/rails/issues/2" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/2" data-id="1008" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#2</a>) ActiveSupport::Date does not override the Date.today method. This means that the core ruby library's .today method is called which may be based off of a different time zone than what's set in config.time_zone.
+
+Submitting a pull request.</pre></div>
+
+  </td>
+
+  <td class="commit-meta">
+
+
+        <code><a href="/Mochaleaf/rails/commit/151723ed688eb161d9e6adc80a780912d9346940" class="commit-id">151723e</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-2d54abd">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@Mochaleaf" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/863132?v=3&amp;s=32" width="16" />
+      <a href="/Mochaleaf" class="author" truncate="true">Mochaleaf</a>
+
+      referenced
+      this issue
+      from a commit
+        in Mochaleaf/rails
+      <a href="#ref-commit-2d54abd" class="timestamp">
+        <time datetime="2011-08-04T03:42:25Z" is="relative-time">Aug 4, 2011</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+    data-channel="rails/rails:commit:2d54abd78472dd93fa989a4c9282536eb004c043"
+    data-url="/rails/rails/commit/2d54abd78472dd93fa989a4c9282536eb004c043/show_partial?partial=commit%2Fcondensed"
+  >
+
+  <td class="commit-icon">
+      <span class="octicon octicon-git-commit "></span>
+  </td>
+
+    <td class="commit-gravatar">
+      <a href="/leepfrog"><img alt="@leepfrog" class="avatar avatar-small" height="16" src="https://avatars0.githubusercontent.com/u/119997?v=3&amp;s=32" width="16" /></a>
+    </td>
+
+    <td class="commit-author">
+      <strong><a href="/leepfrog" class="author" rel="contributor">leepfrog</a></strong>
+    </td>
+
+  <td class="commit-message">
+      <code><a href="/Mochaleaf/rails/commit/2d54abd78472dd93fa989a4c9282536eb004c043" class="message" data-pjax="true" title="Fixing bugs in ActiveSupport::Date. Fixes #759.
+
+There are two issues here:
+
+#1) ActiveSupport::Date current method has a misleading conditional. Time.zone is always returned because config.time_zone is set by default on a project.
+
+#2) ActiveSupport::Date does not override the Date.today method. This means that the core ruby library's .today method is called which may be based off of a different time zone than what's set in config.time_zone.">Fixing bugs in ActiveSupport::Date. Fixes</a> <a href="https://github.com/rails/rails/issues/759" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/759" data-id="904459" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#759</a><a href="/Mochaleaf/rails/commit/2d54abd78472dd93fa989a4c9282536eb004c043" class="message" data-pjax="true" title="Fixing bugs in ActiveSupport::Date. Fixes #759.
+
+There are two issues here:
+
+#1) ActiveSupport::Date current method has a misleading conditional. Time.zone is always returned because config.time_zone is set by default on a project.
+
+#2) ActiveSupport::Date does not override the Date.today method. This means that the core ruby library's .today method is called which may be based off of a different time zone than what's set in config.time_zone.">.</a></code>
+
+        <span class="hidden-text-expander inline">
+          <a href="#" class="js-details-target">&hellip;</a>
+        </span>
+        <div class="commit-desc"><pre class="text-small">There are two issues here:
+
+<a href="https://github.com/rails/rails/issues/1" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/1" data-id="132" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#1</a>) ActiveSupport::Date current method has a misleading conditional. Time.zone is always returned because config.time_zone is set by default on a project.
+
+<a href="https://github.com/rails/rails/issues/2" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/2" data-id="1008" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#2</a>) ActiveSupport::Date does not override the Date.today method. This means that the core ruby library's .today method is called which may be based off of a different time zone than what's set in config.time_zone.</pre></div>
+
+  </td>
+
+  <td class="commit-meta">
+
+
+        <code><a href="/Mochaleaf/rails/commit/2d54abd78472dd93fa989a4c9282536eb004c043" class="commit-id">2d54abd</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+      This was referenced <time datetime="2011-11-22T15:42:15Z" is="relative-time">Nov 22, 2011</time>
+    </div>
+
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+              <span class="octicon octicon-git-pull-request "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-pullrequest-2311121">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/3714" class="title-link">
+              ActiveModel::Serialization now accepts parameters for methods
+
+              <span class="issue-num">
+                #3714
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+              <span class="octicon octicon-git-pull-request "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-pullrequest-2457388">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/3871" class="title-link">
+              Add value_of/values_of to AR::Base/AR::Relation
+
+              <span class="issue-num">
+                #3871
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-2967459">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/4670" class="title-link">
+              Documentation: ConnectionPool, contract/close
+
+              <span class="issue-num">
+                #4670
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-3596787">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/5370" class="title-link">
+              Routing broken in mountable engines
+
+              <span class="issue-num">
+                #5370
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-2173076">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/3567" class="title-link">
+              Ajax On Rails &quot;link_to_remote&quot; deprecated
+
+              <span class="issue-num">
+                #3567
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-c110779">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@joergschray" class="avatar" height="16" src="https://avatars1.githubusercontent.com/u/1497057?v=3&amp;s=32" width="16" />
+      <a href="/joergschray" class="author" truncate="true">joergschray</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-c110779" class="timestamp">
+        <time datetime="2012-03-19T07:09:06Z" is="relative-time">Mar 19, 2012</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+>
+
+  <td class="commit-icon">
+      <span class="octicon octicon-x "></span>
+  </td>
+
+
+  <td class="commit-message">
+      <span class="text-muted">Commit has since been removed from the repository and is no longer available.</span>
+  </td>
+
+  <td class="commit-meta">
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+      This was referenced <time datetime="2012-04-09T18:08:45Z" is="relative-time">Apr 9, 2012</time>
+    </div>
+
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-4031750">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/5790" class="title-link">
+              :try isn&#39;t working through delegation
+
+              <span class="issue-num">
+                #5790
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-4336069">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/6037" class="title-link">
+              Report of errors in JBuilder partials is totally wrong
+
+              <span class="issue-num">
+                #6037
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-4954308">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/6660" class="title-link">
+              ActiveSupport core extension
+
+              <span class="issue-num">
+                #6660
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-5509583">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/7018" class="title-link">
+              attr_accessible on some properties + attr_protected on others makes class &#39;open-by-default&#39;
+
+              <span class="issue-num">
+                #7018
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-5193760">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/6809" class="title-link">
+              Model generator should print a warning if passed a plural name and automatically convert it
+
+              <span class="issue-num">
+                #6809
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-merged right">
+              <span class="octicon octicon-git-pull-request "></span>
+            Merged
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-pullrequest-8083828">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/8114" class="title-link">
+              Allow setting a symbol as path in scope on routes
+
+              <span class="issue-num">
+                #8114
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-9019826">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/8422" class="title-link">
+              `Undefined method [model]_url&#39; in controller when `create&#39; with no `show&#39;
+
+              <span class="issue-num">
+                #8422
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/archonic"><img alt="@archonic" class="timeline-comment-avatar" height="48" src="https://avatars3.githubusercontent.com/u/588846?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-11814416"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="8391291afacf90ba3d3ba22c0bac297e">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/archonic" class="author">archonic</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-11814416" class="timestamp">
+      <time datetime="2013-01-02T16:41:24Z" is="relative-time">Jan 2, 2013</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>lulz</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+      <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-pullrequest-9949144">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@josemota" class="avatar" height="16" src="https://avatars0.githubusercontent.com/u/81412?v=3&amp;s=32" width="16" />
+      <a href="/josemota" class="author" truncate="true">josemota</a>
+
+      referenced
+      this issue
+      <a class="timestamp" href="#ref-pullrequest-9949144">
+        <time datetime="2013-01-14T17:06:33Z" is="relative-time">Jan 14, 2013</time>
+      </a>
+    </div>
+
+      <span class="state state-closed right">
+          <span class="octicon octicon-git-pull-request "></span>
+        Closed
+      </span>
+
+
+
+    <h3 class="discussion-item-ref-title">
+      <a href="/rails/rails/issues/8936" class="title-link">
+        Review, please: Capture block so content won&#39;t leak.
+        <span class="issue-num">#8936</span>
+</a>    </h3>
+
+  </div>
+
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-65535ae">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@joergschray" class="avatar" height="16" src="https://avatars1.githubusercontent.com/u/1497057?v=3&amp;s=32" width="16" />
+      <a href="/joergschray" class="author" truncate="true">joergschray</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-65535ae" class="timestamp">
+        <time datetime="2013-03-14T22:07:10Z" is="relative-time">Mar 14, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+>
+
+  <td class="commit-icon">
+      <span class="octicon octicon-x "></span>
+  </td>
+
+
+  <td class="commit-message">
+      <span class="text-muted">Commit has since been removed from the repository and is no longer available.</span>
+  </td>
+
+  <td class="commit-meta">
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-8ddcb49">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@joergschray" class="avatar" height="16" src="https://avatars1.githubusercontent.com/u/1497057?v=3&amp;s=32" width="16" />
+      <a href="/joergschray" class="author" truncate="true">joergschray</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-8ddcb49" class="timestamp">
+        <time datetime="2013-03-15T08:42:23Z" is="relative-time">Mar 15, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+>
+
+  <td class="commit-icon">
+      <span class="octicon octicon-x "></span>
+  </td>
+
+
+  <td class="commit-message">
+      <span class="text-muted">Commit has since been removed from the repository and is no longer available.</span>
+  </td>
+
+  <td class="commit-meta">
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-06e5b05">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@joergschray" class="avatar" height="16" src="https://avatars1.githubusercontent.com/u/1497057?v=3&amp;s=32" width="16" />
+      <a href="/joergschray" class="author" truncate="true">joergschray</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-06e5b05" class="timestamp">
+        <time datetime="2013-04-15T21:35:26Z" is="relative-time">Apr 15, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+>
+
+  <td class="commit-icon">
+      <span class="octicon octicon-x "></span>
+  </td>
+
+
+  <td class="commit-message">
+      <span class="text-muted">Commit has since been removed from the repository and is no longer available.</span>
+  </td>
+
+  <td class="commit-meta">
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-1eced51">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@joergschray" class="avatar" height="16" src="https://avatars1.githubusercontent.com/u/1497057?v=3&amp;s=32" width="16" />
+      <a href="/joergschray" class="author" truncate="true">joergschray</a>
+
+      referenced
+      this issue
+      from a commit
+        in tandem-softworks/rails
+      <a href="#ref-commit-1eced51" class="timestamp">
+        <time datetime="2013-04-27T10:08:42Z" is="relative-time">Apr 27, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+    data-channel="rails/rails:commit:1eced514d65c46c3d75378700f818598c9c94f64"
+    data-url="/rails/rails/commit/1eced514d65c46c3d75378700f818598c9c94f64/show_partial?partial=commit%2Fcondensed"
+  >
+
+  <td class="commit-icon">
+      <span class="octicon octicon-git-commit "></span>
+  </td>
+
+    <td class="commit-gravatar">
+      <a href="/joergschray"><img alt="@joergschray" class="avatar avatar-small" height="16" src="https://avatars1.githubusercontent.com/u/1497057?v=3&amp;s=32" width="16" /></a>
+    </td>
+
+    <td class="commit-author">
+      <strong><a href="/joergschray" class="author" rel="contributor">joergschray</a></strong>
+    </td>
+
+  <td class="commit-message">
+      <code><a href="/tandem-softworks/rails/commit/1eced514d65c46c3d75378700f818598c9c94f64" class="message" data-pjax="true" title="Issue #1: :before_add callback is called when nested attributes assignment assigns to existing record if the association is not yet loaded
+Issue #2: Nested Attributes assignment does not affect the record in the association target when callback triggers loading of the association
+
+Complete rewrite of tests">Issue</a> <a href="https://github.com/rails/rails/issues/1" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/1" data-id="132" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#1</a><a href="/tandem-softworks/rails/commit/1eced514d65c46c3d75378700f818598c9c94f64" class="message" data-pjax="true" title="Issue #1: :before_add callback is called when nested attributes assignment assigns to existing record if the association is not yet loaded
+Issue #2: Nested Attributes assignment does not affect the record in the association target when callback triggers loading of the association
+
+Complete rewrite of tests">: :before_add callback is called when nested attributes assig…</a></code>
+
+        <span class="hidden-text-expander inline">
+          <a href="#" class="js-details-target">&hellip;</a>
+        </span>
+        <div class="commit-desc"><pre class="text-small">…nment assigns to existing record if the association is not yet loaded
+
+Issue <a href="https://github.com/rails/rails/issues/2" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/2" data-id="1008" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#2</a>: Nested Attributes assignment does not affect the record in the association target when callback triggers loading of the association
+
+Complete rewrite of tests</pre></div>
+
+  </td>
+
+  <td class="commit-meta">
+
+
+        <code><a href="/tandem-softworks/rails/commit/1eced514d65c46c3d75378700f818598c9c94f64" class="commit-id">1eced51</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-7683db8">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@Empact" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/5470?v=3&amp;s=32" width="16" />
+      <a href="/Empact" class="author" truncate="true">Empact</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-7683db8" class="timestamp">
+        <time datetime="2013-07-21T00:56:28Z" is="relative-time">Jul 21, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+>
+
+  <td class="commit-icon">
+      <span class="octicon octicon-x "></span>
+  </td>
+
+
+  <td class="commit-message">
+      <span class="text-muted">Commit has since been removed from the repository and is no longer available.</span>
+  </td>
+
+  <td class="commit-meta">
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-4dff3c2">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@Empact" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/5470?v=3&amp;s=32" width="16" />
+      <a href="/Empact" class="author" truncate="true">Empact</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-4dff3c2" class="timestamp">
+        <time datetime="2013-07-22T12:07:35Z" is="relative-time">Jul 22, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+>
+
+  <td class="commit-icon">
+      <span class="octicon octicon-x "></span>
+  </td>
+
+
+  <td class="commit-message">
+      <span class="text-muted">Commit has since been removed from the repository and is no longer available.</span>
+  </td>
+
+  <td class="commit-meta">
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-3e4dd23">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@Empact" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/5470?v=3&amp;s=32" width="16" />
+      <a href="/Empact" class="author" truncate="true">Empact</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-3e4dd23" class="timestamp">
+        <time datetime="2013-07-22T16:13:47Z" is="relative-time">Jul 22, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+>
+
+  <td class="commit-icon">
+      <span class="octicon octicon-x "></span>
+  </td>
+
+
+  <td class="commit-message">
+      <span class="text-muted">Commit has since been removed from the repository and is no longer available.</span>
+  </td>
+
+  <td class="commit-meta">
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-7361a90">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@Empact" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/5470?v=3&amp;s=32" width="16" />
+      <a href="/Empact" class="author" truncate="true">Empact</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-7361a90" class="timestamp">
+        <time datetime="2013-07-27T19:31:12Z" is="relative-time">Jul 27, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+>
+
+  <td class="commit-icon">
+      <span class="octicon octicon-x "></span>
+  </td>
+
+
+  <td class="commit-message">
+      <span class="text-muted">Commit has since been removed from the repository and is no longer available.</span>
+  </td>
+
+  <td class="commit-meta">
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-de4b6ce">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@Empact" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/5470?v=3&amp;s=32" width="16" />
+      <a href="/Empact" class="author" truncate="true">Empact</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-de4b6ce" class="timestamp">
+        <time datetime="2013-07-31T09:52:33Z" is="relative-time">Jul 31, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+>
+
+  <td class="commit-icon">
+      <span class="octicon octicon-x "></span>
+  </td>
+
+
+  <td class="commit-message">
+      <span class="text-muted">Commit has since been removed from the repository and is no longer available.</span>
+  </td>
+
+  <td class="commit-meta">
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-018697d">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@Empact" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/5470?v=3&amp;s=32" width="16" />
+      <a href="/Empact" class="author" truncate="true">Empact</a>
+
+      referenced
+      this issue
+      from a commit
+        in Empact/rails
+      <a href="#ref-commit-018697d" class="timestamp">
+        <time datetime="2013-08-12T09:37:57Z" is="relative-time">Aug 12, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+    data-channel="rails/rails:commit:018697dece967f3f2861a085e747ba14f06c507c"
+    data-url="/rails/rails/commit/018697dece967f3f2861a085e747ba14f06c507c/show_partial?partial=commit%2Fcondensed"
+  >
+
+  <td class="commit-icon">
+      <span class="octicon octicon-git-commit "></span>
+  </td>
+
+    <td class="commit-gravatar">
+      <a href="/joergschray"><img alt="@joergschray" class="avatar avatar-small" height="16" src="https://avatars1.githubusercontent.com/u/1497057?v=3&amp;s=32" width="16" /></a>
+    </td>
+
+    <td class="commit-author">
+      <strong><a href="/joergschray" class="author" rel="contributor">joergschray</a></strong>
+    </td>
+
+  <td class="commit-message">
+      <code><a href="/Empact/rails/commit/018697dece967f3f2861a085e747ba14f06c507c" class="message" data-pjax="true" title="Fix interactions between :before_add callbacks and nested attributes assignment
+
+Issue #1: :before_add callback is called when nested attributes assignment assigns to existing record if the association is not yet loaded
+Issue #2: Nested Attributes assignment does not affect the record in the association target when callback triggers loading of the association">Fix interactions between :before_add callbacks and nested attributes …</a></code>
+
+        <span class="hidden-text-expander inline">
+          <a href="#" class="js-details-target">&hellip;</a>
+        </span>
+        <div class="commit-desc"><pre class="text-small">…assignment
+
+Issue <a href="https://github.com/rails/rails/issues/1" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/1" data-id="132" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#1</a>: :before_add callback is called when nested attributes assignment assigns to existing record if the association is not yet loaded
+Issue <a href="https://github.com/rails/rails/issues/2" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/2" data-id="1008" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#2</a>: Nested Attributes assignment does not affect the record in the association target when callback triggers loading of the association</pre></div>
+
+  </td>
+
+  <td class="commit-meta">
+
+
+        <code><a href="/Empact/rails/commit/018697dece967f3f2861a085e747ba14f06c507c" class="commit-id">018697d</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+      <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-issue-18895558">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@buschhardt" class="avatar" height="16" src="https://avatars1.githubusercontent.com/u/1921078?v=3&amp;s=32" width="16" />
+      <a href="/buschhardt" class="author" truncate="true">buschhardt</a>
+
+      referenced
+      this issue
+      <a class="timestamp" href="#ref-issue-18895558">
+        <time datetime="2013-09-03T09:27:20Z" is="relative-time">Sep 3, 2013</time>
+      </a>
+    </div>
+
+      <span class="state state-closed right">
+          <span class="octicon octicon-issue-opened "></span>
+        Closed
+      </span>
+
+
+
+    <h3 class="discussion-item-ref-title">
+      <a href="/rails/rails/issues/12113" class="title-link">
+        sqlite3 dosn&#39;t work
+        <span class="issue-num">#12113</span>
+</a>    </h3>
+
+  </div>
+
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-125929c">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@ehtb" class="avatar" height="16" src="https://avatars0.githubusercontent.com/u/527458?v=3&amp;s=32" width="16" />
+      <a href="/ehtb" class="author" truncate="true">ehtb</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-125929c" class="timestamp">
+        <time datetime="2013-09-03T16:38:42Z" is="relative-time">Sep 3, 2013</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+>
+
+  <td class="commit-icon">
+      <span class="octicon octicon-x "></span>
+  </td>
+
+
+  <td class="commit-message">
+      <span class="text-muted">Commit has since been removed from the repository and is no longer available.</span>
+  </td>
+
+  <td class="commit-meta">
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+      This was referenced <time datetime="2013-11-09T10:34:27Z" is="relative-time">Nov 9, 2013</time>
+    </div>
+
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-22383835">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/12820" class="title-link">
+              ActionView::PartialRenderer #collection_with_template and #render_partial do not forward layout yield arguments to partial
+
+              <span class="issue-num">
+                #12820
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-22557175">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/12867" class="title-link">
+              Rails 4.0.0 and 4.0.1 PostgreSQLAdapter does not properly check whether a connection is active
+
+              <span class="issue-num">
+                #12867
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-issue-26041279">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@terracatta" class="avatar" height="16" src="https://avatars1.githubusercontent.com/u/315873?v=3&amp;s=32" width="16" />
+      <a href="/terracatta" class="author" truncate="true">terracatta</a>
+
+      referenced
+      this issue
+      <a class="timestamp" href="#ref-issue-26041279">
+        <time datetime="2014-01-21T20:17:18Z" is="relative-time">Jan 21, 2014</time>
+      </a>
+    </div>
+
+      <span class="state state-closed right">
+          <span class="octicon octicon-issue-opened "></span>
+        Closed
+      </span>
+
+
+
+    <h3 class="discussion-item-ref-title">
+      <a href="/rails/rails/issues/13783" class="title-link">
+        New finder methods (#second, #third) etc do not work correctly on associations
+        <span class="issue-num">#13783</span>
+</a>    </h3>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-98cb3e6">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@glinesbdev" class="avatar" height="16" src="https://avatars0.githubusercontent.com/u/8079652?v=3&amp;s=32" width="16" />
+      <a href="/glinesbdev" class="author" truncate="true">glinesbdev</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-98cb3e6" class="timestamp">
+        <time datetime="2014-07-25T22:02:35Z" is="relative-time">Jul 25, 2014</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+    data-channel="rails/rails:commit:98cb3e69afd687f7c0d4bc48eabf284da691abcc"
+    data-url="/rails/rails/commit/98cb3e69afd687f7c0d4bc48eabf284da691abcc/show_partial?partial=commit%2Fcondensed"
+  >
+
+  <td class="commit-icon">
+      <span class="octicon octicon-git-commit "></span>
+  </td>
+
+    <td class="commit-gravatar">
+      <a href="/vipulnsward"><img alt="@vipulnsward" class="avatar avatar-small" height="16" src="https://avatars0.githubusercontent.com/u/567626?v=3&amp;s=32" width="16" /></a>
+    </td>
+
+    <td class="commit-author">
+      <strong><a href="/vipulnsward" class="author" rel="contributor">vipulnsward</a></strong>
+    </td>
+
+  <td class="commit-message">
+      <code><a href="/rails/rails/commit/98cb3e69afd687f7c0d4bc48eabf284da691abcc" class="message" data-pjax="true" title="update copyright notices to 2014. [ci skip]">update copyright notices to 2014. [ci skip]</a></code>
+
+
+  </td>
+
+  <td class="commit-meta">
+        <a href="/rails/rails/commit/98cb3e69afd687f7c0d4bc48eabf284da691abcc#comments"><span aria-label="View comments on this commit" class="octicon octicon-comment-discussion "></span></a>
+
+
+        <code><a href="/rails/rails/commit/98cb3e69afd687f7c0d4bc48eabf284da691abcc" class="commit-id">98cb3e6</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+      This was referenced <time datetime="2014-08-16T18:41:44Z" is="relative-time">Aug 16, 2014</time>
+    </div>
+
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-merged right">
+              <span class="octicon octicon-git-pull-request "></span>
+            Merged
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-pullrequest-40109642">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/16485" class="title-link">
+              Integrate ActiveJob / DeliverLater / GlobalID with Rails
+
+              <span class="issue-num">
+                #16485
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-42573569">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/16883" class="title-link">
+              4.2.0.beta1 with pg: to_yaml blows up with NoMethodError: undefined method `name&#39; for nil:NilClass
+
+              <span class="issue-num">
+                #16883
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-a9050e7">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@rafaelfranca" class="avatar" height="16" src="https://avatars2.githubusercontent.com/u/47848?v=3&amp;s=32" width="16" />
+      <a href="/rafaelfranca" class="author" truncate="true">rafaelfranca</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-a9050e7" class="timestamp">
+        <time datetime="2014-10-15T16:54:00Z" is="relative-time">Oct 15, 2014</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+    data-channel="rails/rails:commit:a9050e71bf0da9fd76f5c71abab250549b3b3a45"
+    data-url="/rails/rails/commit/a9050e71bf0da9fd76f5c71abab250549b3b3a45/show_partial?partial=commit%2Fcondensed"
+  >
+
+  <td class="commit-icon">
+      <span class="octicon octicon-git-commit "></span>
+  </td>
+
+    <td class="commit-gravatar">
+      <a href="/claudiob"><img alt="@claudiob" class="avatar avatar-small" height="16" src="https://avatars3.githubusercontent.com/u/10076?v=3&amp;s=32" width="16" /></a>
+    </td>
+
+    <td class="commit-author">
+      <strong><a href="/claudiob" class="author" rel="contributor">claudiob</a></strong>
+    </td>
+
+  <td class="commit-message">
+      <code><a href="/rails/rails/commit/a9050e71bf0da9fd76f5c71abab250549b3b3a45" class="message" data-pjax="true" title="Remove duplicate stringify_keys in text_field_tag
+
+All the methods that invoke `text_field_tag` (such as `hidden_field_tag`)
+and all the methods that invoke `number_field_tag` (that is `range_field_tag`)
+do not need to call `stringify_keys` on their `options` parameter since the
+`text_field_tag` method [is already doing it internally](https://github.com/claudiob/rails/blob/4159134524f4c78d008eef9d9a17f73a3172dcc8/actionview/lib/action_view/helpers/form_tag_helper.rb#L182):
+
+```ruby
+def text_field_tag(name, value = nil, options = {})
+  tag :input, { &quot;type&quot; =&gt; &quot;text&quot;, &quot;name&quot; =&gt; name, &quot;id&quot; =&gt; sanitize_to_id(name), &quot;value&quot; =&gt; value }.update(options.stringify_keys)
+end
+```
+
+and `number_field_tag` is [already doing it internally](https://github.com/claudiob/rails/blob/e3207bdbba55f3806441f22b175557579bc0b051/actionview/lib/action_view/helpers/form_tag_helper.rb#L780) as well:
+
+```ruby
+def number_field_tag(name, value = nil, options = {})
+  options = options.stringify_keys
+  ...
+end
+
+[Note #1: My code uses `merge` to respect the existing behavior of
+duplicating the `options` hash before updating its keys, see https://github.com/rails/rails/pull/17096#issuecomment-57223827]
+
+[Note #2: My code uses symbols instead of strings (e.g.: `:hidden`) to look
+forward to future version of Ruby/Raiks (GC symbols); the result of the method,
+however, is the same, because the symbols are stringified inside `text_field_tag`]
+
+[Note #3: I had previously created a similar PR #17096 but decided to
+split it into multiple PRs given the feedback received in the comments]">Remove duplicate stringify_keys in text_field_tag</a></code>
+
+        <span class="hidden-text-expander inline">
+          <a href="#" class="js-details-target">&hellip;</a>
+        </span>
+        <div class="commit-desc"><pre class="text-small">All the methods that invoke `text_field_tag` (such as `hidden_field_tag`)
+and all the methods that invoke `number_field_tag` (that is `range_field_tag`)
+do not need to call `stringify_keys` on their `options` parameter since the
+`text_field_tag` method [is already doing it internally](<a href="https://github.com/claudiob/rails/blob/4159134524f4c78d008eef9d9a17f73a3172dcc8/actionview/lib/action_view/helpers/form_tag_helper.rb#L182">https://github.com/claudiob/rails/blob/4159134524f4c78d008eef9d9a17f73a3172dcc8/actionview/lib/action_view/helpers/form_tag_helper.rb#L182</a>):
+
+```ruby
+def text_field_tag(name, value = nil, options = {})
+  tag :input, { "type" =&gt; "text", "name" =&gt; name, "id" =&gt; sanitize_to_id(name), "value" =&gt; value }.update(options.stringify_keys)
+end
+```
+
+and `number_field_tag` is [already doing it internally](<a href="https://github.com/claudiob/rails/blob/e3207bdbba55f3806441f22b175557579bc0b051/actionview/lib/action_view/helpers/form_tag_helper.rb#L780">https://github.com/claudiob/rails/blob/e3207bdbba55f3806441f22b175557579bc0b051/actionview/lib/action_view/helpers/form_tag_helper.rb#L780</a>) as well:
+
+```ruby
+def number_field_tag(name, value = nil, options = {})
+  options = options.stringify_keys
+  ...
+end
+
+[Note <a href="https://github.com/rails/rails/issues/1" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/1" data-id="132" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#1</a>: My code uses `merge` to respect the existing behavior of
+duplicating the `options` hash before updating its keys, see <a href="https://github.com/rails/rails/pull/17096#issuecomment-57223827" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/17096" data-id="44265124" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#17096 (comment)</a>]
+
+[Note <a href="https://github.com/rails/rails/issues/2" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/2" data-id="1008" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#2</a>: My code uses symbols instead of strings (e.g.: `:hidden`) to look
+forward to future version of Ruby/Raiks (GC symbols); the result of the method,
+however, is the same, because the symbols are stringified inside `text_field_tag`]
+
+[Note <a href="https://github.com/rails/rails/issues/3" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/3" data-id="8158" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#3</a>: I had previously created a similar PR <a href="https://github.com/rails/rails/pull/17096" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/17096" data-id="44265124" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#17096</a> but decided to
+split it into multiple PRs given the feedback received in the comments]</pre></div>
+
+  </td>
+
+  <td class="commit-meta">
+
+
+        <code><a href="/rails/rails/commit/a9050e71bf0da9fd76f5c71abab250549b3b3a45" class="commit-id">a9050e7</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-59d8c08">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@sachin004" class="avatar" height="16" src="https://avatars0.githubusercontent.com/u/1550776?v=3&amp;s=32" width="16" />
+      <a href="/sachin004" class="author" truncate="true">sachin004</a>
+
+      referenced
+      this issue
+      from a commit
+        in sachin004/rails
+      <a href="#ref-commit-59d8c08" class="timestamp">
+        <time datetime="2014-12-13T07:02:30Z" is="relative-time">Dec 13, 2014</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+    data-channel="rails/rails:commit:59d8c08668dd20d7f18624456ee6bd1d99eff1b0"
+    data-url="/rails/rails/commit/59d8c08668dd20d7f18624456ee6bd1d99eff1b0/show_partial?partial=commit%2Fcondensed"
+  >
+
+  <td class="commit-icon">
+      <span class="octicon octicon-git-commit "></span>
+  </td>
+
+    <td class="commit-gravatar">
+      <a href="/claudiob"><img alt="@claudiob" class="avatar avatar-small" height="16" src="https://avatars3.githubusercontent.com/u/10076?v=3&amp;s=32" width="16" /></a>
+    </td>
+
+    <td class="commit-author">
+      <strong><a href="/claudiob" class="author" rel="contributor">claudiob</a></strong>
+    </td>
+
+  <td class="commit-message">
+      <code><a href="/sachin004/rails/commit/59d8c08668dd20d7f18624456ee6bd1d99eff1b0" class="message" data-pjax="true" title="Remove duplicate stringify_keys in text_field_tag
+
+All the methods that invoke `text_field_tag` (such as `hidden_field_tag`)
+and all the methods that invoke `number_field_tag` (that is `range_field_tag`)
+do not need to call `stringify_keys` on their `options` parameter since the
+`text_field_tag` method [is already doing it internally](https://github.com/claudiob/rails/blob/4159134524f4c78d008eef9d9a17f73a3172dcc8/actionview/lib/action_view/helpers/form_tag_helper.rb#L182):
+
+```ruby
+def text_field_tag(name, value = nil, options = {})
+  tag :input, { &quot;type&quot; =&gt; &quot;text&quot;, &quot;name&quot; =&gt; name, &quot;id&quot; =&gt; sanitize_to_id(name), &quot;value&quot; =&gt; value }.update(options.stringify_keys)
+end
+```
+
+and `number_field_tag` is [already doing it internally](https://github.com/claudiob/rails/blob/e3207bdbba55f3806441f22b175557579bc0b051/actionview/lib/action_view/helpers/form_tag_helper.rb#L780) as well:
+
+```ruby
+def number_field_tag(name, value = nil, options = {})
+  options = options.stringify_keys
+  ...
+end
+
+[Note #1: My code uses `merge` to respect the existing behavior of
+duplicating the `options` hash before updating its keys, see https://github.com/rails/rails/pull/17096#issuecomment-57223827]
+
+[Note #2: My code uses symbols instead of strings (e.g.: `:hidden`) to look
+forward to future version of Ruby/Raiks (GC symbols); the result of the method,
+however, is the same, because the symbols are stringified inside `text_field_tag`]
+
+[Note #3: I had previously created a similar PR #17096 but decided to
+split it into multiple PRs given the feedback received in the comments]">Remove duplicate stringify_keys in text_field_tag</a></code>
+
+        <span class="hidden-text-expander inline">
+          <a href="#" class="js-details-target">&hellip;</a>
+        </span>
+        <div class="commit-desc"><pre class="text-small">All the methods that invoke `text_field_tag` (such as `hidden_field_tag`)
+and all the methods that invoke `number_field_tag` (that is `range_field_tag`)
+do not need to call `stringify_keys` on their `options` parameter since the
+`text_field_tag` method [is already doing it internally](<a href="https://github.com/claudiob/rails/blob/4159134524f4c78d008eef9d9a17f73a3172dcc8/actionview/lib/action_view/helpers/form_tag_helper.rb#L182">https://github.com/claudiob/rails/blob/4159134524f4c78d008eef9d9a17f73a3172dcc8/actionview/lib/action_view/helpers/form_tag_helper.rb#L182</a>):
+
+```ruby
+def text_field_tag(name, value = nil, options = {})
+  tag :input, { "type" =&gt; "text", "name" =&gt; name, "id" =&gt; sanitize_to_id(name), "value" =&gt; value }.update(options.stringify_keys)
+end
+```
+
+and `number_field_tag` is [already doing it internally](<a href="https://github.com/claudiob/rails/blob/e3207bdbba55f3806441f22b175557579bc0b051/actionview/lib/action_view/helpers/form_tag_helper.rb#L780">https://github.com/claudiob/rails/blob/e3207bdbba55f3806441f22b175557579bc0b051/actionview/lib/action_view/helpers/form_tag_helper.rb#L780</a>) as well:
+
+```ruby
+def number_field_tag(name, value = nil, options = {})
+  options = options.stringify_keys
+  ...
+end
+
+[Note <a href="https://github.com/rails/rails/issues/1" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/1" data-id="132" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#1</a>: My code uses `merge` to respect the existing behavior of
+duplicating the `options` hash before updating its keys, see <a href="https://github.com/rails/rails/pull/17096#issuecomment-57223827" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/17096" data-id="44265124" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">rails#17096 (comment)</a>]
+
+[Note <a href="https://github.com/rails/rails/issues/2" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/2" data-id="1008" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#2</a>: My code uses symbols instead of strings (e.g.: `:hidden`) to look
+forward to future version of Ruby/Raiks (GC symbols); the result of the method,
+however, is the same, because the symbols are stringified inside `text_field_tag`]
+
+[Note <a href="https://github.com/rails/rails/issues/3" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/3" data-id="8158" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#3</a>: I had previously created a similar PR <a href="https://github.com/rails/rails/pull/17096" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/17096" data-id="44265124" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#17096</a> but decided to
+split it into multiple PRs given the feedback received in the comments]</pre></div>
+
+  </td>
+
+  <td class="commit-meta">
+
+
+        <code><a href="/sachin004/rails/commit/59d8c08668dd20d7f18624456ee6bd1d99eff1b0" class="commit-id">59d8c08</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-24bce01">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@divineforest" class="avatar" height="16" src="https://avatars0.githubusercontent.com/u/22360?v=3&amp;s=32" width="16" />
+      <a href="/divineforest" class="author" truncate="true">divineforest</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-24bce01" class="timestamp">
+        <time datetime="2015-01-12T14:04:14Z" is="relative-time">Jan 12, 2015</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+    data-channel="rails/rails:commit:24bce01220fc638f37608e6071b230f7af4ae7a0"
+    data-url="/rails/rails/commit/24bce01220fc638f37608e6071b230f7af4ae7a0/show_partial?partial=commit%2Fcondensed"
+  >
+
+  <td class="commit-icon">
+      <span class="octicon octicon-git-commit "></span>
+  </td>
+
+    <td class="commit-gravatar">
+      <a href="/claudiob"><img alt="@claudiob" class="avatar avatar-small" height="16" src="https://avatars3.githubusercontent.com/u/10076?v=3&amp;s=32" width="16" /></a>
+    </td>
+
+    <td class="commit-author">
+      <strong><a href="/claudiob" class="author" rel="contributor">claudiob</a></strong>
+    </td>
+
+  <td class="commit-message">
+      <code><a href="/rails/rails/commit/24bce01220fc638f37608e6071b230f7af4ae7a0" class="message" data-pjax="true" title="Remove duplicate stringify_keys in text_field_tag
+
+All the methods that invoke `text_field_tag` (such as `hidden_field_tag`)
+and all the methods that invoke `number_field_tag` (that is `range_field_tag`)
+do not need to call `stringify_keys` on their `options` parameter since the
+`text_field_tag` method [is already doing it internally](https://github.com/claudiob/rails/blob/4159134524f4c78d008eef9d9a17f73a3172dcc8/actionview/lib/action_view/helpers/form_tag_helper.rb#L182):
+
+```ruby
+def text_field_tag(name, value = nil, options = {})
+  tag :input, { &quot;type&quot; =&gt; &quot;text&quot;, &quot;name&quot; =&gt; name, &quot;id&quot; =&gt; sanitize_to_id(name), &quot;value&quot; =&gt; value }.update(options.stringify_keys)
+end
+```
+
+and `number_field_tag` is [already doing it internally](https://github.com/claudiob/rails/blob/e3207bdbba55f3806441f22b175557579bc0b051/actionview/lib/action_view/helpers/form_tag_helper.rb#L780) as well:
+
+```ruby
+def number_field_tag(name, value = nil, options = {})
+  options = options.stringify_keys
+  ...
+end
+
+[Note #1: My code uses `merge` to respect the existing behavior of
+duplicating the `options` hash before updating its keys, see https://github.com/rails/rails/pull/17096#issuecomment-57223827]
+
+[Note #2: My code uses symbols instead of strings (e.g.: `:hidden`) to look
+forward to future version of Ruby/Raiks (GC symbols); the result of the method,
+however, is the same, because the symbols are stringified inside `text_field_tag`]
+
+[Note #3: I had previously created a similar PR #17096 but decided to
+split it into multiple PRs given the feedback received in the comments]">Remove duplicate stringify_keys in text_field_tag</a></code>
+
+        <span class="hidden-text-expander inline">
+          <a href="#" class="js-details-target">&hellip;</a>
+        </span>
+        <div class="commit-desc"><pre class="text-small">All the methods that invoke `text_field_tag` (such as `hidden_field_tag`)
+and all the methods that invoke `number_field_tag` (that is `range_field_tag`)
+do not need to call `stringify_keys` on their `options` parameter since the
+`text_field_tag` method [is already doing it internally](<a href="https://github.com/claudiob/rails/blob/4159134524f4c78d008eef9d9a17f73a3172dcc8/actionview/lib/action_view/helpers/form_tag_helper.rb#L182">https://github.com/claudiob/rails/blob/4159134524f4c78d008eef9d9a17f73a3172dcc8/actionview/lib/action_view/helpers/form_tag_helper.rb#L182</a>):
+
+```ruby
+def text_field_tag(name, value = nil, options = {})
+  tag :input, { "type" =&gt; "text", "name" =&gt; name, "id" =&gt; sanitize_to_id(name), "value" =&gt; value }.update(options.stringify_keys)
+end
+```
+
+and `number_field_tag` is [already doing it internally](<a href="https://github.com/claudiob/rails/blob/e3207bdbba55f3806441f22b175557579bc0b051/actionview/lib/action_view/helpers/form_tag_helper.rb#L780">https://github.com/claudiob/rails/blob/e3207bdbba55f3806441f22b175557579bc0b051/actionview/lib/action_view/helpers/form_tag_helper.rb#L780</a>) as well:
+
+```ruby
+def number_field_tag(name, value = nil, options = {})
+  options = options.stringify_keys
+  ...
+end
+
+[Note <a href="https://github.com/rails/rails/issues/1" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/1" data-id="132" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#1</a>: My code uses `merge` to respect the existing behavior of
+duplicating the `options` hash before updating its keys, see <a href="https://github.com/rails/rails/pull/17096#issuecomment-57223827" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/17096" data-id="44265124" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#17096 (comment)</a>]
+
+[Note <a href="https://github.com/rails/rails/issues/2" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/2" data-id="1008" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#2</a>: My code uses symbols instead of strings (e.g.: `:hidden`) to look
+forward to future version of Ruby/Raiks (GC symbols); the result of the method,
+however, is the same, because the symbols are stringified inside `text_field_tag`]
+
+[Note <a href="https://github.com/rails/rails/issues/3" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/3" data-id="8158" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#3</a>: I had previously created a similar PR <a href="https://github.com/rails/rails/pull/17096" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/17096" data-id="44265124" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#17096</a> but decided to
+split it into multiple PRs given the feedback received in the comments]</pre></div>
+
+  </td>
+
+  <td class="commit-meta">
+
+
+        <code><a href="/rails/rails/commit/24bce01220fc638f37608e6071b230f7af4ae7a0" class="commit-id">24bce01</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+      This was referenced <time datetime="2015-02-15T20:59:09Z" is="relative-time">Feb 15, 2015</time>
+    </div>
+
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-open right">
+              <span class="octicon octicon-git-pull-request "></span>
+            Open
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-pullrequest-57687207">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/18940" class="title-link">
+              Some enum improvements
+
+              <span class="issue-num">
+                #18940
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+      <div class="discussion-item-rollup-ref">
+          <span class="state state-closed right">
+                <span class="octicon octicon-issue-closed "></span>
+            Closed
+          </span>
+
+
+
+        <div class="discussion-item-header" id="ref-issue-10895749">
+          <h3 class="discussion-item-ref-title">
+            <a href="/rails/rails/issues/9256" class="title-link">
+              `rails console` fails with &quot;`require&#39;: cannot load such file -- minitest/unit (LoadError)&quot; with default app on Cygwin
+
+              <span class="issue-num">
+                #9256
+              </span>
+</a>          </h3>
+        </div>
+      </div>
+
+  </div>
+
+
+
+
+
+
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/KMStanton"><img alt="@KMStanton" class="timeline-comment-avatar" height="48" src="https://avatars0.githubusercontent.com/u/8999869?v=3&amp;s=96" width="48" /></a>
+    <div id="issuecomment-133752986"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="75ad85f9fb6525213e86bbcb85889e75">
+
+  <div class="timeline-comment-header ">
+
+
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/KMStanton" class="author">KMStanton</a>
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-133752986" class="timestamp">
+      <time datetime="2015-08-22T20:47:31Z" is="relative-time">Aug 22, 2015</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Rails are on the railroad.</p>
+
+<p>Django was a person.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-8db2e67">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@pcreux" class="avatar" height="16" src="https://avatars1.githubusercontent.com/u/45299?v=3&amp;s=32" width="16" />
+      <a href="/pcreux" class="author" truncate="true">pcreux</a>
+
+      referenced
+      this issue
+      from a commit
+      <a href="#ref-commit-8db2e67" class="timestamp">
+        <time datetime="2015-10-01T17:54:08Z" is="relative-time">Oct 1, 2015</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+    data-channel="rails/rails:commit:8db2e67c0ab5560314a8e26d93e5fa1eeda5a1fa"
+    data-url="/rails/rails/commit/8db2e67c0ab5560314a8e26d93e5fa1eeda5a1fa/show_partial?partial=commit%2Fcondensed"
+  >
+
+  <td class="commit-icon">
+      <span class="octicon octicon-git-commit "></span>
+  </td>
+
+    <td class="commit-gravatar">
+      <a href="/tenderlove"><img alt="@tenderlove" class="avatar avatar-small" height="16" src="https://avatars2.githubusercontent.com/u/3124?v=3&amp;s=32" width="16" /></a>
+    </td>
+
+    <td class="commit-author">
+      <strong><a href="/tenderlove" class="author" rel="contributor">tenderlove</a></strong>
+    </td>
+
+  <td class="commit-message">
+      <code><a href="/rails/rails/commit/8db2e67c0ab5560314a8e26d93e5fa1eeda5a1fa" class="message" data-pjax="true" title="remove the request parameter from `parse_formatted_parameters`
+
+This is an instance method on the request object now so we don&#39;t need it
+anymore">remove the request parameter from `parse_formatted_parameters`</a></code>
+
+        <span class="hidden-text-expander inline">
+          <a href="#" class="js-details-target">&hellip;</a>
+        </span>
+        <div class="commit-desc"><pre class="text-small">This is an instance method on the request object now so we don't need it
+anymore</pre></div>
+
+  </td>
+
+  <td class="commit-meta">
+        <a href="/rails/rails/commit/8db2e67c0ab5560314a8e26d93e5fa1eeda5a1fa#comments"><span aria-label="View comments on this commit" class="octicon octicon-comment-discussion "></span></a>
+
+
+        <code><a href="/rails/rails/commit/8db2e67c0ab5560314a8e26d93e5fa1eeda5a1fa" class="commit-id">8db2e67</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+
+
+  <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-commit-054edd9">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@tijmenb" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/233676?v=3&amp;s=32" width="16" />
+      <a href="/tijmenb" class="author" truncate="true">tijmenb</a>
+
+      referenced
+      this issue
+      from a commit
+        in tijmenb/rails
+      <a href="#ref-commit-054edd9" class="timestamp">
+        <time datetime="2015-11-03T21:30:35Z" is="relative-time">Nov 3, 2015</time>
+      </a>
+    </div>
+
+    <table class="timeline-commits">
+
+
+<tr class="commit js-details-container js-socket-channel js-updatable-content"
+    data-channel="rails/rails:commit:054edd9308f52f7435089f2242d6f75251fc6cb6"
+    data-url="/rails/rails/commit/054edd9308f52f7435089f2242d6f75251fc6cb6/show_partial?partial=commit%2Fcondensed"
+  >
+
+  <td class="commit-icon">
+      <span class="octicon octicon-git-commit "></span>
+  </td>
+
+    <td class="commit-gravatar">
+      <a href="/tijmenb"><img alt="@tijmenb" class="avatar avatar-small" height="16" src="https://avatars3.githubusercontent.com/u/233676?v=3&amp;s=32" width="16" /></a>
+    </td>
+
+    <td class="commit-author">
+      <strong><a href="/tijmenb" class="author" rel="contributor">tijmenb</a></strong>
+    </td>
+
+  <td class="commit-message">
+      <code><a href="/tijmenb/rails/commit/054edd9308f52f7435089f2242d6f75251fc6cb6" class="message" data-pjax="true" title="Add text template for source code
+
+When a request is made with AJAX and an error occurs, Rails will render
+a text-template for the exception instead of the HTML error page
+(#11960).
+
+The `.text.erb` variant of the `_source` template is currently missing,
+causing HTML to be rendered in the response. This commit adds the text
+template.
+
+Related to #14745.
+
+Before:
+
+```
+~/testing-exceptions  ᐅ curl &#39;http://localhost:3000/&#39; -H
+&#39;X-Requested-With: XMLHttpRequest&#39;
+RuntimeError in PostsController#index
+
+    &lt;div class=&quot;source &quot; id=&quot;frame-source-0&quot;&gt;
+      &lt;div class=&quot;info&quot;&gt;
+        Extracted source (around line &lt;strong&gt;#3&lt;/strong&gt;):
+      &lt;/div&gt;
+      &lt;div class=&quot;data&quot;&gt;
+        &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;lines&quot;&gt;
+          &lt;tr&gt;
+```
+
+After:
+
+```
+~/testing-exceptions  ᐅ curl &#39;http://localhost:3000/&#39; -H
+&#39;X-Requested-With: XMLHttpRequest&#39;
+RuntimeError in PostsController#index
+
+Extracted source (around line #3):
+
+#1 class PostsController &lt; ApplicationController
+#2   def index
+*3     raise
+#4   end
+#5 end
+```">Add text template for source code</a></code>
+
+        <span class="hidden-text-expander inline">
+          <a href="#" class="js-details-target">&hellip;</a>
+        </span>
+        <div class="commit-desc"><pre class="text-small">When a request is made with AJAX and an error occurs, Rails will render
+a text-template for the exception instead of the HTML error page
+(<a href="https://github.com/rails/rails/pull/11960" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/11960" data-id="18351451" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#11960</a>).
+
+The `.text.erb` variant of the `_source` template is currently missing,
+causing HTML to be rendered in the response. This commit adds the text
+template.
+
+Related to <a href="https://github.com/rails/rails/pull/14745" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/14745" data-id="31462820" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#14745</a>.
+
+Before:
+
+```
+~/testing-exceptions  ᐅ curl 'http://localhost:3000/' -H
+'X-Requested-With: XMLHttpRequest'
+RuntimeError in PostsController#index
+
+    &lt;div class="source " id="frame-source-0"&gt;
+      &lt;div class="info"&gt;
+        Extracted source (around line &lt;strong&gt;<a href="https://github.com/rails/rails/issues/3" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/3" data-id="8158" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#3</a>&lt;/strong&gt;):
+      &lt;/div&gt;
+      &lt;div class="data"&gt;
+        &lt;table cellpadding="0" cellspacing="0" class="lines"&gt;
+          &lt;tr&gt;
+```
+
+After:
+
+```
+~/testing-exceptions  ᐅ curl 'http://localhost:3000/' -H
+'X-Requested-With: XMLHttpRequest'
+RuntimeError in PostsController#index
+
+Extracted source (around line <a href="https://github.com/rails/rails/issues/3" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/3" data-id="8158" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#3</a>):
+
+<a href="https://github.com/rails/rails/issues/1" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/1" data-id="132" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#1</a> class PostsController &lt; ApplicationController
+<a href="https://github.com/rails/rails/issues/2" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/2" data-id="1008" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#2</a>   def index
+*3     raise
+<a href="https://github.com/rails/rails/pull/4" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/4" data-id="298859" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#4</a>   end
+<a href="https://github.com/rails/rails/pull/5" class="issue-link js-issue-link" data-url="https://github.com/rails/rails/issues/5" data-id="299035" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#5</a> end
+```</pre></div>
+
+  </td>
+
+  <td class="commit-meta">
+
+
+        <code><a href="/tijmenb/rails/commit/054edd9308f52f7435089f2242d6f75251fc6cb6" class="commit-id">054edd9</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+
+
+
+      <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-issue-120922564">
+      <span class="discussion-item-icon">
+        <span class="octicon octicon-bookmark "></span>
+      </span>
+
+      <img alt="@bjm88" class="avatar" height="16" src="https://avatars0.githubusercontent.com/u/3016277?v=3&amp;s=32" width="16" />
+      <a href="/bjm88" class="author" truncate="true">bjm88</a>
+
+      referenced
+      this issue
+      <a class="timestamp" href="#ref-issue-120922564">
+        <time datetime="2015-12-08T03:31:19Z" is="relative-time">Dec 8, 2015</time>
+      </a>
+    </div>
+
+      <span class="state state-closed right">
+          <span class="octicon octicon-issue-opened "></span>
+        Closed
+      </span>
+
+
+
+    <h3 class="discussion-item-ref-title">
+      <a href="/rails/rails/issues/22531" class="title-link">
+        Rails 3.2 breaks hard on MySQL 5.7
+        <span class="issue-num">#22531</span>
+</a>    </h3>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Rendered timeline since 2015-12-14 07:38:50 -->
+<div id="partial-timeline-marker"
+      class="js-timeline-marker js-socket-channel js-updatable-content"
+      data-channel="rails/rails:issue:132"
+      data-url="/rails/rails/issues/1/show_partial?partial=issues%2Ftimeline_marker&amp;since=1450107530"
+      data-last-modified="Mon, 14 Dec 2015 15:38:50 GMT">
+
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/rails/rails/notifications/mark?ids=5669729" class="hidden js-timeline-marker-form" data-form-nonce="d4a8e1eb4ddd998f44240f1279d5edb5b16a1285" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="kydoMPadLe0840ORtNy7p5R6JyI4I/Nt5qxUxq1ZP8dtXEGC4qwDbDAWtCAuTciky+VsD1gTau7qjleA5aYnyw==" /></div>
+</form></div>
+
+
+              <div class="discussion-item discussion-item-closed">
+                <div class="discussion-item-header">
+                  <span class="discussion-item-icon">
+                    <span class="octicon octicon-circle-slash "></span>
+                  </span>
+                  This issue was <strong>closed</strong>.
+                </div>
+              </div>
+              <div class="closed-banner"></div>
+        </div>
+
+          <div class="discussion-timeline-actions">
+                <div class="signed-out-comment">
+  <a href="/join" class="btn btn-primary" rel="nofollow">Sign up for free</a>
+  <strong>to join this conversation on GitHub</strong>.
+  Already have an account?
+  <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Frails%2Frails%2Fissues%2F1" rel="nofollow">Sign in to comment</a>
+</div>
+
+
+          </div>
+      </div>
+
+    </div>
+    <div class="clear"></div>
+  </div>
+
+</div>
+
+
+  </div>
+  <div class="modal-backdrop"></div>
+</div>
+
+    </div>
+  </div>
+
+    </div>
+
+        <div class="container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+      <li><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+        <li><a href="https://github.com/pricing" data-ga-click="Footer, go to pricing, text:pricing">Pricing</a></li>
+
+    </ul>
+
+    <a href="https://github.com" aria-label="Homepage">
+      <span class="mega-octicon octicon-mark-github " title="GitHub "></span>
+</a>
+    <ul class="site-footer-links">
+      <li>&copy; 2015 <span title="0.58460s from github-fe134-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+        <li><a href="https://help.github.com" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <span class="octicon octicon-x"></span>
+      </button>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/frameworks-ef8eb4a89ee9f3c8b7613307fe589a8f5705817f7cee27bec51ce5e963234abf.js"></script>
+      <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github-4b6b8e7d11ebb7bce85126d3b4130c80041f2ae6d5d6ef8901a8c0c3f7cb80d2.js"></script>
+
+
+
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner hidden">
+      <span class="octicon octicon-alert"></span>
+      <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+      <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    </div>
+  </body>
+</html>
+
