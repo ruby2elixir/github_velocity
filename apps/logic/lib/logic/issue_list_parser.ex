@@ -4,6 +4,10 @@ defmodule Logic.IssueListParser do
   def parse(issue_list_html) do
     issue_list_doc = Floki.find(issue_list_html, ".table-list")
     issue_items = Floki.find(issue_list_doc, ".js-issue-row") |> parse_issue_rows
+
+    %Logic.IssueList{
+      issues: issue_items
+    }
   end
 
 
