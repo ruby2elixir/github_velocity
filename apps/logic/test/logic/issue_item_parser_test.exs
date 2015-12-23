@@ -14,7 +14,7 @@ defmodule Logic.IssueItemParserTest do
         assert @result.title  == "Major performance regression when preloading has_many_through association"
         assert @result.path  == "/rails/rails/issues/12537"
         assert @result.status  == "closed"
-        assert @result.number_of_comments == 5
+        assert @result.number_of_comments == 15
       end
 
       it "has right closing data" do
@@ -25,6 +25,20 @@ defmodule Logic.IssueItemParserTest do
       it "has last activity data" do
         assert @result.last_activity_at  == "2015-12-19T02:46:15Z"
         assert @result.last_activity_by  == "tenderlove"
+      end
+    end
+
+    describe "old github issues (2009) still work" do
+      @result "issues/rails_1.html" |> TestHelper.fixture |> IssueItemParser.parse
+
+      it "is parsed to proper structs" do
+        assert @result.id  == "1"
+        assert @result.opened_at  == "2009-04-01T04:24:23Z"
+        assert @result.opened_by  == "leah"
+        assert @result.title  == "Rails is not Django"
+        assert @result.path  == "/rails/rails/issues/1"
+        assert @result.status  == "closed"
+        assert @result.number_of_comments == 10
       end
     end
 
@@ -39,7 +53,7 @@ defmodule Logic.IssueItemParserTest do
         assert @result.opened_at  == "2015-02-26T01:15:31Z"
         assert @result.opened_by  == "sbull"
         assert @result.title  == "Thread bug with Rails::Engine mounted routes, undefined method `url_options'"
-        assert @result.number_of_comments == 9
+        assert @result.number_of_comments == 19
       end
 
       it "has no closing data" do
