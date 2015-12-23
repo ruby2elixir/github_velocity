@@ -136,6 +136,6 @@ defmodule Logic.IssueItemParser do
       |> Floki.find(".gh-header-meta .flex-table-item-primary")
       |> Floki.text
 
-    Regex.run(~r/(\d+) comments/, s) |> Enum.at(1) |> String.to_integer
+    Regex.run(~r/(\d+) (comment|comments)/, s) |> Enum.at(1) |> String.to_integer
   end
 end
