@@ -28,7 +28,7 @@ defmodule Logic.Util do
         end
 
         def get_current_time do
-          Timex.Date.now |>  Timex.DateFormat.format("{ISOz}") |> Prelude.ok
+          Timex.Date.now |> Timex.DateFormat.format("{ISOz}") |> Prelude.ok
         end
 
       end
