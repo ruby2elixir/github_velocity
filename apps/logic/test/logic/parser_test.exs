@@ -13,7 +13,7 @@ defmodule Logic.IssueItemParserTest do
         assert @result.opened_by  == "njakobsen"
         assert @result.title  == "Major performance regression when preloading has_many_through association"
         assert @result.path  == "/rails/rails/issues/12537"
-        assert @result.status  == "Closed"
+        assert @result.status  == "closed"
         assert @result.number_of_comments == 5
       end
 
@@ -34,7 +34,7 @@ defmodule Logic.IssueItemParserTest do
 
       it "is parsed to proper structs" do
         assert @result.id  == "19084"
-        assert @result.status  == "Open"
+        assert @result.status  == "open"
         assert @result.path  == "/rails/rails/issues/19084"
         assert @result.opened_at  == "2015-02-26T01:15:31Z"
         assert @result.opened_by  == "sbull"

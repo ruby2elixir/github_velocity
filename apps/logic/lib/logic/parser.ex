@@ -18,7 +18,7 @@ defmodule Logic.IssueItemParser do
       |> Map.put(:updated_at,                  get_current_time)
 
     case item.status  do
-       "Closed" -> item |> parse_closed_data(issue_doc)
+       "closed" -> item |> parse_closed_data(issue_doc)
        _ -> item
     end
   end
@@ -70,6 +70,7 @@ defmodule Logic.IssueItemParser do
       |> Enum.at(0)
       |> Floki.text
       |> String.strip
+      |> String.downcase
   end
 
   def get_closed_by(issue_doc) do
