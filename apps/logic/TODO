@@ -1,0 +1,4 @@
+# Before running jobs:
+ ☐ latest_activity_at on issues_list fetching
+ ☐ storing results in ES
+ ☐ fetching single issue only if the last_activity_at in the database is older than that from issues_list
