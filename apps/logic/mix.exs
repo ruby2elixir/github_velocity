@@ -16,7 +16,7 @@ defmodule Logic.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :tzdata],
+    [applications: [:logger, :tzdata, :httpotion],
      mod: {Logic, []}]
   end
 
@@ -40,6 +40,8 @@ defmodule Logic.Mixfile do
       {:prelude, github: "houshuang/elixir-prelude", ref: "e225b83d631c7db44243c2be46b892dbcc559e66"},
       {:poison, "1.5.0"},
       {:timex, "1.0.0-rc4"},
+      {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.2"},
+      {:httpotion, "~> 2.1.0"},
       {:ex_spec, "~> 1.0.0", only: :test}
     ]
   end
