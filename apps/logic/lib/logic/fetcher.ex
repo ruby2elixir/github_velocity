@@ -4,8 +4,10 @@ defmodule Logic.Fetcher do
   end
 
   def fetch(project, pagenum)  do
-    uri = url(project, pagenum)
-    HTTPotion.get uri
+    url(project, pagenum)
+      |> HTTPotion.get
+      |> Map.get(:body)
+      |> Logic.IssueListParser.parse
   end
 
   def url(project, page) do
