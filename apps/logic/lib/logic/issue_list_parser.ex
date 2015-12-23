@@ -1,15 +1,32 @@
 defmodule Logic.IssueListParser do
-  #use Logic.Util.Parser
+  use Logic.Util.Parser
 
   def parse(issue_list_html) do
-    issue_list_doc = Floki.find(issue_list_html, ".table-list")
-    issue_items = Floki.find(issue_list_doc, ".js-issue-row") |> parse_issue_rows
+    issue_list_doc = Floki.find(issue_list_html, "body")
+    issues = Floki.find(issue_list_doc, ".js-issue-row") |> parse_issue_rows
+    pagenum = issue_list_doc |> parse_pagenum
+    total_pages = issue_list_doc |> parse_total_pages
 
     %Logic.IssueList{
-      issues: issue_items
+      issues: issues,
+      pagenum: pagenum,
+      total_pages: total_pages
     }
   end
 
+  def parse_total_pages(issue_list_doc) do
+    issue_list_doc
+      |> Floki.find(".pagination a")
+      |> Enum.reverse
+      |> Enum.at(1)
+      |> clean_integer
+  end
+
+  def parse_pagenum(issue_list_doc) do
+    issue_list_doc
+      |> Floki.find(".paginate-container .current")
+      |> clean_integer
+  end
 
   def parse_issue_rows(elems) do
     elems |> Enum.map &parse_issue_row/1

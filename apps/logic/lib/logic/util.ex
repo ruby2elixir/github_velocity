@@ -15,6 +15,13 @@ defmodule Logic.Util do
             |> find_in_attrs("datetime")
         end
 
+        defp clean_integer(elem) do
+          elem
+            |> Floki.text
+            |> String.strip
+            |> String.to_integer
+        end
+
         defp last(list) do
           list
             |> Enum.reverse

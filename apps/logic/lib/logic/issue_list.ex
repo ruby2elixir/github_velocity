@@ -2,7 +2,9 @@ defmodule Logic.IssueList do
   @derive [Poison.Encoder]
   defstruct pagenum: "",
     path: "",
-    issues: []
+    issues: [],
+    total_pages: 0
+
 end
 
 defmodule Logic.IssueListItem do

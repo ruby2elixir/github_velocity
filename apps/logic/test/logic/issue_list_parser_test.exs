@@ -9,6 +9,8 @@ defmodule Logic.IssueListParserTest do
 
       it "has right count" do
         assert @result.issues |> Enum.count == 25
+        assert @result.pagenum == 1
+        assert @result.total_pages == 319
       end
 
       it "parses the right data" do
